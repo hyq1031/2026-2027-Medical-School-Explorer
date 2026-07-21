@@ -163,6 +163,89 @@
             margin-top: 0.25rem;
         }
 
+        /* Key Concepts Section */
+        .concepts-section {
+            margin-bottom: 2rem;
+        }
+
+        .concepts-heading {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .concepts-heading i {
+            color: var(--secondary);
+        }
+
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .concept-card {
+            background-color: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .concept-card-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .concept-card-title i {
+            color: var(--primary);
+        }
+
+        .concept-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.6rem;
+        }
+
+        .concept-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .concept-card strong {
+            color: var(--text-primary);
+        }
+
+        .concept-card .concept-tip {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+            background: var(--primary-glow);
+            border: 1px solid var(--border-color-glow);
+            border-radius: 10px;
+            padding: 0.7rem 0.9rem;
+            font-size: 0.82rem;
+            color: var(--text-primary);
+            margin-top: 0.75rem;
+        }
+
+        .concept-card .concept-tip i {
+            color: var(--primary);
+            margin-top: 0.15rem;
+        }
+
         /* Dashboard Main Layout */
         .dashboard {
             display: grid;
@@ -270,6 +353,183 @@
 
         .filter-select:focus {
             border-color: var(--primary);
+        }
+
+        .filter-hint {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-top: 0.6rem;
+        }
+
+        .match-input {
+            margin-bottom: 0.6rem;
+        }
+
+        .match-input:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* Gate-type badges */
+        .gate-score-driven { background: var(--primary-glow); color: var(--primary); }
+        .gate-residency-gated { background: var(--secondary-glow); color: var(--secondary); }
+        .gate-space-constrained { background: var(--warning-glow); color: var(--warning); }
+        .gate-mixed { background: hsla(12, 95%, 60%, 0.15); color: var(--accent); }
+        .gate-unresearched { background: hsla(220, 10%, 55%, 0.1); color: var(--text-muted); }
+
+        /* Match-status badges */
+        .match-likely { background: var(--success-glow); color: var(--success); }
+        .match-possible { background: var(--warning-glow); color: var(--warning); }
+        .match-unlikely { background: hsla(355, 85%, 60%, 0.15); color: var(--danger); }
+        .match-gated { background: var(--secondary-glow); color: var(--secondary); }
+
+        /* Confidence tags */
+        .confidence-tag {
+            font-size: 0.65rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-left: 0.6rem;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .confidence-verified { background: var(--success-glow); color: var(--success); }
+        .confidence-estimated { background: var(--warning-glow); color: var(--warning); }
+        .confidence-unverified { background: hsla(220, 10%, 55%, 0.1); color: var(--text-muted); }
+
+        .confidence-legend {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        /* Weighting bar */
+        .weighting-bar {
+            display: flex;
+            height: 28px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-bottom: 0.6rem;
+        }
+
+        .weighting-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: hsl(222, 28%, 7%);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .weighting-segment.seg-atar { background: var(--primary); }
+        .weighting-segment.seg-ucat { background: var(--secondary); color: #fff; }
+        .weighting-segment.seg-interview { background: var(--accent); }
+        .weighting-segment.seg-unknown { background: var(--bg-input); color: var(--text-muted); font-weight: 500; }
+
+        .weighting-legend {
+            display: flex;
+            gap: 1.2rem;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .weighting-legend .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 0.35rem;
+        }
+
+        .weighting-fallback {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+        }
+
+        .bonded-flag {
+            color: var(--warning);
+            font-size: 0.72rem;
+            margin-left: 0.3rem;
+            text-decoration: none;
+        }
+
+        .bonded-flag:hover {
+            text-decoration: underline;
+        }
+
+        /* Timeline section */
+        .timeline-section {
+            margin-bottom: 2rem;
+        }
+
+        .timeline-track {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .timeline-month-group {
+            background-color: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-month-label {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 0.9rem;
+        }
+
+        .timeline-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .timeline-point {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0.6rem 0.9rem;
+            min-width: 200px;
+            flex: 1 1 220px;
+        }
+
+        .timeline-point .tp-school {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-point .tp-label {
+            font-size: 0.76rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-point .tp-eligibility {
+            font-size: 0.7rem;
+            color: var(--secondary);
         }
 
         /* Pill selector for states */
@@ -1027,6 +1287,46 @@
             </div>
         </header>
 
+        <!-- Key Concepts -->
+        <section class="concepts-section" id="concepts-section">
+            <h2 class="concepts-heading"><i class="fa-solid fa-lightbulb"></i> Key Concepts Before You Apply</h2>
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <h3 class="concept-card-title"><i class="fa-solid fa-shuffle"></i> How Multi-Offer Systems Work (UAC / QTAC / VTAC / SATAC / TISC)</h3>
+                    <p>Each admissions round, the centre (e.g. <strong>UAC</strong> for NSW) issues <strong>exactly one offer</strong>: the highest-ranked course on your preference list among the ones that actually selected you that round. It does not send you every offer you're eligible for.</p>
+                    <p>This means a common source of confusion — "why didn't School X make me an offer even though they interviewed me?" — is often not a rejection at all. It's a preference-ordering issue.</p>
+                    <div class="concept-tip">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span><strong>Strategy:</strong> rank your true first choice <em>lower</em> until you've banked a safety offer in an earlier round. Then reorder your list (safety choice to the bottom, real choice to the top) so the next round's single offer becomes the one you actually want.</span>
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <h3 class="concept-card-title"><i class="fa-solid fa-file-signature"></i> Bonded vs Unbonded Offers</h3>
+                    <p>Some rural-entry or waitlist offers (e.g. at UNSW, WSU) are <strong>bonded</strong> — they carry a return-of-service obligation to work in a rural/regional (Modified Monash Model 3–7) area for a set period after you qualify.</p>
+                    <p>The rural-service period for some bonded places typically applies <strong>after specialist fellowship</strong> (around 18 months), not immediately after graduating — by which point many doctors have a family or a spouse's career that makes relocating difficult.</p>
+                    <div class="concept-tip">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span><strong>Rule of thumb:</strong> prefer an unbonded offer if you have the choice between comparable programs. Buying out a bonded place after the fact can cost well into six figures.</span>
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <h3 class="concept-card-title"><i class="fa-solid fa-shield-halved"></i> How to Read the Data Confidence Tags</h3>
+                    <p>Every school on this site carries a confidence badge in its detail view: <span class="confidence-tag confidence-verified" style="margin-left:0;">Officially Verified</span> means it was checked directly against that university's own admissions page. <span class="confidence-tag confidence-estimated" style="margin-left:0;">Third-Party Estimate</span> means it came from prep-company aggregator sites, not the university itself. <span class="confidence-tag confidence-unverified" style="margin-left:0;">Unverified</span> means it hasn't been independently researched yet.</p>
+                    <div class="concept-tip">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>Treat "Officially Verified" as reliable for this cycle, and double-check "Third-Party Estimate" / "Unverified" schools directly with the university before relying on them.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Timeline -->
+        <section class="timeline-section" id="timeline-section">
+            <h2 class="concepts-heading"><i class="fa-solid fa-timeline"></i> Application Timeline (2026/27 Cycle)</h2>
+            <p class="filter-hint" style="margin-bottom: 1rem;">Interview rounds are grouped by month. Where a school runs more than one round (e.g. Monash's December round for VIC/rural applicants vs its January round for everyone else), each round is shown as a separate entry with who it's actually open to — a strong UCAT alone doesn't unlock an earlier round if the round itself is category-gated.</p>
+            <div class="timeline-track" id="timeline-track"></div>
+        </section>
+
         <!-- Main Dashboard -->
         <div class="dashboard">
             
@@ -1073,7 +1373,8 @@
                         <select id="ucat-filter" class="filter-select">
                             <option value="ALL">All Options</option>
                             <option value="Required">UCAT Required</option>
-                            <option value="Not Required">UCAT Optional / Not Required</option>
+                            <option value="Optional">UCAT Optional (Tiebreaker Only)</option>
+                            <option value="Not Required">UCAT Not Required</option>
                         </select>
                     </div>
 
@@ -1087,6 +1388,19 @@
                     </div>
 
                     <div class="sidebar-section">
+                        <h3 class="section-title"><i class="fa-solid fa-bolt"></i> Admission Gate</h3>
+                        <select id="gate-filter" class="filter-select">
+                            <option value="ALL">All Options</option>
+                            <option value="score-driven">Score-Driven Only</option>
+                            <option value="residency-gated">Residency-Gated</option>
+                            <option value="space-constrained">Limited Seats</option>
+                            <option value="mixed">Mixed Gate</option>
+                            <option value="unresearched">Not Yet Researched</option>
+                        </select>
+                        <p class="filter-hint">A high UCAT/ATAR alone doesn't guarantee an interview at residency-gated or space-constrained schools — see the card badges below.</p>
+                    </div>
+
+                    <div class="sidebar-section">
                         <div class="slider-container">
                             <div class="slider-labels">
                                 <span class="section-title" style="margin: 0;"><i class="fa-solid fa-sliders"></i> Max Min ATAR</span>
@@ -1094,6 +1408,25 @@
                             </div>
                             <input type="range" min="80" max="100" step="0.5" value="100" class="slider" id="atar-slider">
                         </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3 class="section-title"><i class="fa-solid fa-user-check"></i> Your Profile (Match Estimator)</h3>
+                        <input type="number" id="user-atar-input" class="search-input match-input" placeholder="Your ATAR (e.g. 97.50)" min="0" max="100" step="0.05">
+                        <input type="number" id="user-ucat-input" class="search-input match-input" placeholder="Your UCAT total (e.g. 2400, out of 2700)" min="300" max="2700" step="10">
+                        <select id="user-state-select" class="filter-select match-input">
+                            <option value="">Home state (optional)</option>
+                            <option value="NSW">NSW</option>
+                            <option value="VIC">VIC</option>
+                            <option value="QLD">QLD</option>
+                            <option value="WA">WA</option>
+                            <option value="SA">SA</option>
+                            <option value="TAS">TAS</option>
+                            <option value="ACT">ACT</option>
+                            <option value="NT">NT</option>
+                            <option value="NZ">NZ</option>
+                        </select>
+                        <p class="filter-hint">Estimate only, based on disclosed/estimated cutoffs where available. Not a guarantee — especially at residency-gated or space-constrained schools.</p>
                     </div>
 
                     <button class="btn btn-secondary" id="reset-btn" style="width: 100%;">
@@ -1188,11 +1521,37 @@
                     <li class="checklist-item">
                         <i class="fa-solid fa-circle-check"></i>
                         <div>
-                            <strong>Interview Format:</strong> 
+                            <strong>Interview Format:</strong>
                             <span id="drawer-interview-desc">Assessment day written & group activities</span>
                         </div>
                     </li>
+                    <li class="checklist-item">
+                        <i class="fa-solid fa-bolt"></i>
+                        <div>
+                            <strong>Admission Gate:</strong>
+                            <span id="drawer-gate-desc">Score-driven</span>
+                        </div>
+                    </li>
+                    <li class="checklist-item" id="drawer-match-row" style="display: none;">
+                        <i class="fa-solid fa-user-check"></i>
+                        <div>
+                            <strong>Your Match:</strong>
+                            <span id="drawer-match-desc">—</span>
+                        </div>
+                    </li>
                 </ul>
+            </div>
+
+            <div class="drawer-section">
+                <h3 class="drawer-section-title">
+                    <i class="fa-solid fa-scale-balanced"></i> Selection Weighting
+                    <span class="confidence-tag" id="drawer-confidence-tag"></span>
+                </h3>
+                <div class="weighting-bar" id="drawer-weighting-bar"></div>
+                <div class="weighting-legend" id="drawer-weighting-legend"></div>
+                <p class="weighting-fallback" id="drawer-weighting-fallback" style="display: none;">
+                    Not publicly disclosed by this university — treat any percentage you see elsewhere online as unverified.
+                </p>
             </div>
 
             <div class="drawer-section">
@@ -1247,6 +1606,12 @@
             places: "Approx. 340 total MD places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Guaranteed Pathway", "Rural Entry Pathway", "Access Melbourne"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "unresearched",
+            gateNote: null,
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["English", "Chemistry", "Biology (or equivalent)"],
             howToApply: [
               "Register and sit UCAT ANZ in Year 12",
@@ -1273,6 +1638,12 @@
             places: "Approx. 30-40 domestic spots for Double Degree",
             cost: "$13,558/year (CSP Max)",
             schemes: ["MySydney Entry Scheme", "Regional and Remote Entry Scheme", "Indigenous Admission Pathway"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "unresearched",
+            gateNote: null,
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["Mathematics Advanced (assumed)", "English Standard"],
             howToApply: [
               "Apply via UAC (Universities Admissions Centre)",
@@ -1293,12 +1664,22 @@
             closes: "TBC",
             closesText: "TBC (UAC dates apply - late Sep/early Oct 2026)",
             ucat: "Required",
+            ucatText: "Required. UNSW does not publish its ranking algorithm — its own admissions page states \"we do not disclose the ranking algorithm applied.\" Scores are not averaged: a strong result in one measure (ATAR, UCAT, or interview) does not compensate for a weak one elsewhere.",
             interview: "Required",
-            interviewText: "Semi-structured Panel Interview",
+            interviewText: "Semi-structured Panel Interview. UCAT ANZ ≥50th percentile is required just to be considered for interview, but the competitive reality is reported closer to ~94th percentile+.",
             duration: "6 Years",
             places: "198 Domestic Places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Gateway Entry Scheme", "Lateral Entry Scheme", "Rural Student Entry Scheme", "Indigenous Entry Scheme"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "score-driven",
+            gateNote: null,
+            confidence: "verified",
+            schemeMeta: { "Rural Student Entry Scheme": "bonded" },
+            timeline: [
+              { label: "Round 1 Offer", date: "2027-01-08", note: "NSW round via UAC — UNSW, WSU, and JMP offers released the same day.", type: "offer", eligibility: "All applicants" }
+            ],
             prereqs: ["English Standard"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
@@ -1319,12 +1700,22 @@
             closes: "30 September 2026",
             closesText: "30 September 2026",
             ucat: "Required",
+            ucatText: "Required, but not weighted — used for the initial interview-invite ranking (UCAT ANZ aggregate), then again only as a tiebreaker after the interview stage. SJT is reportedly being dropped from JMP selection from the 2027 entry cycle onward.",
             interview: "Required",
-            interviewText: "Multiple Skills Assessment (MSA) & Personal Qualities Assessment (PQA)",
+            interviewText: "Multiple Skills Assessment (MSA) & Personal Qualities Assessment (PQA). ATAR functions as a pass/fail threshold, not a weighted factor — once cleared, applicants are ranked primarily on PQA/MSA performance, then sub-ranked by UCAT aggregate.",
             duration: "5 Years",
             places: "170 total places (110 Newcastle, 60 UNE)",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Rural and Regional Admission Scheme", "Miroma Bunbilla Program (Indigenous)"],
+            weighting: null,
+            ucatCutoffEstimate: 2510,
+            gateType: "score-driven",
+            gateNote: null,
+            confidence: "verified",
+            schemeMeta: {},
+            timeline: [
+              { label: "Round 1 Offer", date: "2027-01-08", note: "NSW round via UAC — UNSW, WSU, and JMP offers released the same day.", type: "offer", eligibility: "All applicants" }
+            ],
             prereqs: ["English Standard"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
@@ -1341,21 +1732,31 @@
             country: "AU",
             program: "Doctor of Medicine (MD)",
             minAtar: 95.50,
-            minAtarText: "95.50 (Metro) / 91.50 (Rural)",
+            minAtarText: "95.50 (General) / 93.50 (Greater Western Sydney subquota) / 91.50 (Rural)",
             closes: "30 September 2026",
             closesText: "30 September 2026",
             ucat: "Required",
+            ucatText: "Required. A separately weighted UCAT score (individual sections, e.g. Verbal Reasoning, may be weighted differently to the flat total) determines who gets an interview invite. UCAT then counts again toward the final offer.",
             interview: "Required",
-            interviewText: "Multiple Mini Interview (MMI)",
+            interviewText: "Multiple Mini Interview (MMI). Final offers are officially weighted 75% interview performance + 25% UCAT ANZ performance — UCAT is not a pure pass/fail threshold, it carries forward into the final ranking.",
             duration: "5 Years",
             places: "Approx. 120 domestic places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Greater Western Sydney (GWS) Scheme", "Rural Admission Scheme", "Indigenous pathway"],
+            weighting: { atar: null, ucat: 75, interview: 25 },
+            ucatCutoffEstimate: null,
+            gateType: "score-driven",
+            gateNote: null,
+            confidence: "verified",
+            schemeMeta: { "Rural Admission Scheme": "bonded" },
+            timeline: [
+              { label: "Round 1 Offer", date: "2027-01-08", note: "NSW round via UAC — UNSW, WSU, and JMP offers released the same day.", type: "offer", eligibility: "All applicants" }
+            ],
             prereqs: ["English Standard"],
             howToApply: [
-              "Sit UCAT ANZ in Year 12 (high weighting on specific sections)",
+              "Sit UCAT ANZ in Year 12 (Verbal Reasoning is reportedly weighted heavily for interview invites)",
               "Apply via UAC",
-              "Attend the MMI interview if invited"
+              "Attend the MMI interview if invited — remember UCAT still counts for 25% of your final offer score"
             ],
             officialUrl: "https://www.westernsydney.edu.au/future/study/courses/undergraduate/doctor-of-medicine"
           },
@@ -1371,16 +1772,27 @@
             closesText: "28 September 2026",
             ucat: "Required",
             interview: "Required",
-            interviewText: "Multiple Mini Interview (MMI)",
+            interviewText: "Multiple Mini Interview (MMI). Interview selection runs in two structurally different rounds: the December round (VIC + rural applicants) is selected on UCAT alone; the January round (everyone else, including interstate/DRL applicants) is selected on UCAT + ATAR equally weighted. Final offers weight ATAR, UCAT, and MMI equally.",
             duration: "5 Years",
             places: "Approx. 230 domestic places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Special Entry Access Scheme (SEAS)", "Dean's Rural List", "Indigenous Entry Pathway"],
+            weighting: { atar: 33, ucat: 33, interview: 33 },
+            ucatCutoffEstimate: null,
+            gateType: "score-driven",
+            gateNote: "Interview selection itself runs in two rounds with different eligibility — see the Application Timeline below.",
+            confidence: "verified",
+            schemeMeta: {},
+            timeline: [
+              { label: "Interview Invites — VIC & Rural Round (UCAT-only selection)", date: "2026-12-01", note: "Category-gated: only open to VIC-based and rural applicants, regardless of interstate score.", type: "invite", eligibility: "VIC + Rural applicants only" },
+              { label: "Interview Invites — General/Interstate Round (UCAT+ATAR equal)", date: "2027-01-20", note: "Deliberately the last round of the season — functions as a safety net for interstate applicants.", type: "invite", eligibility: "All other domestic applicants" }
+            ],
             prereqs: ["English", "Chemistry"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
               "Apply through VTAC",
-              "Participate in the MMI in December/January if shortlisted"
+              "VIC/rural applicants: watch for the December interview round (UCAT-only selection)",
+              "Interstate applicants: your interview round is January, selected on UCAT + ATAR equally — deliberately the last round of the season"
             ],
             officialUrl: "https://www.monash.edu/medicine/som/direct-entry"
           },
@@ -1395,12 +1807,22 @@
             closes: "TBC",
             closesText: "TBC (QTAC deadlines apply)",
             ucat: "Required",
+            ucatText: "Required. Reported weighting: adjusted ATAR ~25% + UCAT ~25%, remaining ~50% not clearly published. Ranking uses the aggregate cognitive UCAT score, with SJT then Verbal Reasoning used only as tiebreakers.",
             interview: "Required",
             interviewText: "Multiple Mini Interview (MMI)",
             duration: "7 Years (3 Years Undergrad + 4 Years MD)",
             places: "Approx. 140 provisional places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["UQ-Ochsner (US) Medical Pathway", "Subject Adjustments", "Rural Access Scheme", "Indigenous pathway"],
+            weighting: null,
+            ucatCutoffEstimate: 2500,
+            gateType: "score-driven",
+            gateNote: null,
+            confidence: "estimated",
+            schemeMeta: {},
+            timeline: [
+              { label: "Interview Offer", date: "2027-01-15", note: "Interstate cutoff reported around this point of the season in the prior cycle.", type: "invite", eligibility: "All applicants" }
+            ],
             prereqs: ["English", "Chemistry (or equivalent)"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
@@ -1420,17 +1842,28 @@
             closes: "30 September 2026",
             closesText: "30 September 2026",
             ucat: "Required",
+            ucatText: "Required, cognitive subtests only (VR/DM/QR weighted equally). SJT is used only as a tiebreaker for the lowest rank. Officially published final-offer weighting: 40% Academic + 20% UCAT + 40% Interview.",
             interview: "Required",
-            interviewText: "Multiple Mini Interview (MMI)",
+            interviewText: "Multiple Mini Interview (MMI) — 40% of final offer weighting.",
             duration: "6 Years",
-            places: "Approx. 130 domestic places",
+            places: "Approx. 130 domestic places (40 of 136 reserved for rural applicants via the Rural Clinical School network — Whyalla, Port Lincoln, Mount Gambier)",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Rural background pathway", "Fairway Access Scheme", "Aboriginal and Torres Strait Islander pathway"],
+            weighting: { atar: 40, ucat: 20, interview: 40 },
+            ucatCutoffEstimate: 2475,
+            gateType: "score-driven",
+            gateNote: "40 of 136 places reserved for SA rural-background applicants via the Rural Clinical School network (Whyalla, Port Lincoln, Mount Gambier).",
+            confidence: "verified",
+            schemeMeta: {},
+            timeline: [
+              { label: "Interview Offer", date: "2027-01-15", note: "Historically among the first schools to release interview offers each season.", type: "invite", eligibility: "All applicants" }
+            ],
             prereqs: ["English", "Chemistry or Biology or Physics"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
               "Apply via SATAC (South Australian Tertiary Admissions Centre)",
-              "Attend the interview in late November/December if invited"
+              "Attend the interview in late November/December if invited",
+              "Remember the final rank is 40% Academic / 20% UCAT / 40% Interview — a strong interview can meaningfully offset a lower UCAT"
             ],
             officialUrl: "https://www.adelaide.edu.au/degree-finder/bmsdm_bmedscidm.html"
           },
@@ -1441,16 +1874,23 @@
             country: "AU",
             program: "Bachelor of Biomedicine / Doctor of Medicine (Direct Pathway)",
             minAtar: 98.00,
-            minAtarText: "98.00 (Competitive ATAR is 99.40+; 96.00 for rural)",
+            minAtarText: "98.00 (Competitive ATAR ~99.40+). Note: sources disagree on whether rural applicants get a lower ATAR threshold (96.00) or the same 98.00 as Broadway/HAA pathways — worth confirming directly with UWA.",
             closes: "TBC",
             closesText: "TBC (Usually late September via TISC)",
             ucat: "Required",
+            ucatText: "Required. Reported weighting: ATAR 30% / UCAT 20% / Interview 50% (from third-party admissions guides, not independently confirmed on UWA's own page).",
             interview: "Required",
-            interviewText: "Multiple Mini Interview (MMI)",
+            interviewText: "Multiple Mini Interview (MMI) — reportedly the single largest weighted component at 50% of final offer.",
             duration: "7 Years (3 Years Undergrad + 4 Years MD)",
             places: "Approx. 80 domestic direct pathway places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Broadway Scheme (Equity)", "Rural Access Scheme", "Indigenous pathway"],
+            weighting: { atar: 30, ucat: 20, interview: 50 },
+            ucatCutoffEstimate: 2600,
+            gateType: "residency-gated",
+            gateNote: "Strong WA-resident preference; interstate applicants face a much smaller effective pool and reportedly get rejected even at very high scores.",
+            confidence: "estimated",
+            schemeMeta: {},
             prereqs: ["Chemistry (assumed)", "Mathematics Methods (assumed)", "English Standard"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
@@ -1476,6 +1916,12 @@
             places: "Approx. 120 total places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Rural and Regional Pathway", "Equity and Access Schemes", "Indigenous Pathway"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "unresearched",
+            gateNote: "Also a WA school — forum discussion grouped it with UWA as having a strong WA-resident bias, but Curtin's own admissions mechanics haven't been independently checked this cycle.",
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["Chemistry", "English Standard"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
@@ -1502,6 +1948,12 @@
             places: "Approx. 30 places (highly competitive)",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Rural Access Scheme", "Griffith Sports/Elite Athlete Scheme", "First Partner Access Scheme"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "unresearched",
+            gateNote: "Griffith's Dentistry program was separately researched and confirmed to use UCAT for interview invites with no published weighting breakdown — this Medicine (Provisional to MD) program hasn't been independently checked and may work differently.",
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["English", "Maths Methods (assumed)", "Chemistry (recommended)"],
             howToApply: [
               "Apply through QTAC",
@@ -1527,6 +1979,12 @@
             places: "Approx. 120 total places",
             cost: "Full Fee Paying (~$95,000 - $110,000/year; not CSP subsidized)",
             schemes: ["Bond Medical Program Indigenous Pathway", "Lateral Entry from Bond Biomedical Science"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "unresearched",
+            gateNote: null,
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["English", "Maths Methods or Chemistry (recommended)"],
             howToApply: [
               "Apply directly to Bond University",
@@ -1552,6 +2010,12 @@
             places: "Approx. 150 domestic places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Rural and Regional Pathway", "Aboriginal & Torres Strait Islander Pathway"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "residency-gated",
+            gateNote: "Overwhelmingly rural-background intake with a strong tropical/rural health focus — even very high-ATAR metro applicants have reportedly missed out on interviews here.",
+            confidence: "verified",
+            schemeMeta: {},
             prereqs: ["English", "Chemistry", "Maths Methods (recommended)"],
             howToApply: [
               "Apply via QTAC",
@@ -1567,16 +2031,23 @@
             country: "AU",
             program: "Bachelor of Clinical Sciences / Doctor of Medicine",
             minAtar: 95.00,
-            minAtarText: "95.00 (Metro competitive is 99.95, Rural is 99.75)",
+            minAtarText: "95.00 minimum (reported competitive cutoffs vary slightly by source: ~99.90–99.95 metro / ~99.65–99.75 rural — treat as indicative, not an official published number)",
             closes: "TBC",
             closesText: "TBC (SATAC deadlines apply)",
             ucat: "Required",
+            ucatText: "Required. Ranking formula: 90% Year-12 subject results + 10% UCAT-derived score. Sub-quota (disadvantage) applicants need ATAR ≥90 after adjustment.",
             interview: "Required",
             interviewText: "Semi-structured Panel Interview",
             duration: "7 Years (3 Years Undergrad + 4 Years MD)",
             places: "Approx. 30 direct entry places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Northern Territory Medical Program (NTMP)", "Rural Student Entry Scheme", "Indigenous Entry Pathway", "Subsidized CSP spots"],
+            weighting: { atar: 90, ucat: 10, interview: null },
+            ucatCutoffEstimate: null,
+            gateType: "mixed",
+            gateNote: "Dual NT/SA catchment school with a separate disadvantage sub-quota — combination of score-driven and residency factors.",
+            confidence: "estimated",
+            schemeMeta: {},
             prereqs: ["English"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
@@ -1602,6 +2073,12 @@
             places: "Approx. 30 pathway places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["ANU Direct Application Adjustment Factors", "Indigenous Pathway"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "unresearched",
+            gateNote: null,
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["Chemistry (recommended)", "English"],
             howToApply: [
               "Apply directly to ANU in Year 12 (closes May) or through UAC (closes Nov)",
@@ -1615,18 +2092,28 @@
             name: "University of Notre Dame Australia",
             state: "WA/NSW",
             country: "AU",
-            program: "Doctor of Medicine (MD) (Direct Pathway)",
+            program: "Bachelor of Biomedical Science (Assured Pathway to MD)",
             minAtar: 92.00,
-            minAtarText: "92.00 (Pathway via Fremantle/Sydney)",
+            minAtarText: "92.00 minimum (Competitive ATAR ~98.5+). Note: this is an \"Assured Pathway\" with guaranteed MD progression on completion of the undergraduate degree — not literal direct-entry MD. Notre Dame separately runs a Graduate Entry MD (GAMSAT+GPA+CASPer, no UCAT) — don't confuse the two when researching on their site.",
             closes: "TBC",
             closesText: "TBC (Usually late September via TISC/UAC or Direct)",
             ucat: "Required",
+            ucatText: "Required for the Assured Pathway (school-leaver entry). Final-offer weighting is officially listed as \"to be advised\" — not published.",
             interview: "Required",
             interviewText: "Multiple Mini Interview (MMI)",
             duration: "7 Years (3 Years Undergrad + 4 Years MD)",
-            places: "Approx. 20-30 direct pathway places",
+            places: "Approx. 20-30 direct pathway places (Sydney campus non-rural intake is reportedly very small — around 10 of ~40 total places, the rest reserved for rural/Indigenous streams)",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Notre Dame Entry Pathway (Personal Statements)", "Rural Pathway", "Indigenous Pathway"],
+            weighting: null,
+            ucatCutoffEstimate: 2600,
+            gateType: "space-constrained",
+            gateNote: "Sydney campus non-rural intake is reportedly only ~10 of ~40 total places — score clears the bar, but seats are the real constraint.",
+            confidence: "estimated",
+            schemeMeta: {},
+            timeline: [
+              { label: "Interview Offer", date: "2026-12-20", note: "Trickles out in the Dec–Jan window, after most other schools.", type: "invite", eligibility: "All applicants" }
+            ],
             prereqs: ["English"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
@@ -1643,21 +2130,28 @@
             country: "AU",
             program: "Bachelor of Medicine / Bachelor of Surgery (MBBS)",
             minAtar: 95.00,
-            minAtarText: "95.00 (Local TAS threshold is 95.00, interstate is higher)",
+            minAtarText: "95.00 (including rural adjustment). The real gate for non-Tasmanians isn't the ATAR number — it's residency: at least 75% of domestic places are reserved for Tasmanian residents specifically (TCE/IB from a Tasmanian school within 5 years), and 50% of domestic places are reserved for rural applicants.",
             closes: "TBC",
             closesText: "TBC (Late September via UTAS direct portal)",
             ucat: "Required",
+            ucatText: "Required, but used only as a tiebreaker when ATAR scores are equal — not blended into rank as an independently weighted factor.",
             interview: "Not Required",
-            interviewText: "None (Based purely on ATAR + UCAT rank)",
+            interviewText: "None. Selection is primarily ATAR-based (with the Tasmanian-residency and rural quotas doing most of the real gatekeeping), and UCAT only breaks ties.",
             duration: "5 Years",
-            places: "Approx. 120 total places",
+            places: "Approx. 120 total places — near-zero realistically go to non-Tasmanian metro applicants once the 75% Tasmanian-residency and 50% rural quotas are applied",
             cost: "$13,558/year (CSP Max)",
-            schemes: ["Tasmanian Rural Health Pathway", "Indigenous entry pathway"],
+            schemes: ["Tasmanian Rural Health Pathway (Rural Application Process, up to +5 ATAR adjustment)", "Indigenous entry pathway"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "residency-gated",
+            gateNote: "≥75% of domestic places reserved for Tasmanian residents (TCE/IB within 5 years); 50% for rural applicants.",
+            confidence: "verified",
+            schemeMeta: {},
             prereqs: ["Chemistry", "English Standard"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
               "Apply directly via the UTAS Admissions Portal",
-              "Offers are determined by combining ATAR and UCAT scores (no interview)"
+              "Offers are ATAR-ranked (UCAT as tiebreaker only, no interview) — but as an interstate metro applicant, weigh this against the 75% Tasmanian-residency quota before treating it as a realistic option"
             ],
             officialUrl: "https://www.utas.edu.au/courses/chm/courses/m3n-bachelor-of-medicine-and-bachelor-of-surgery"
           },
@@ -1679,6 +2173,12 @@
             places: "Approx. 20 places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Direct Pathway to Griffith MD"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "unresearched",
+            gateNote: null,
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["English", "Chemistry (recommended)"],
             howToApply: [
               "Apply through QTAC",
@@ -1704,6 +2204,12 @@
             places: "Approx. 15 places (Bendigo & Albury-Wodonga)",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Rural Victoria Pathway", "Indigenous entry pathway"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "residency-gated",
+            gateNote: "Exclusively for rural-background students by design — not a general-entry pathway.",
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["English", "Chemistry", "Biology (recommended)"],
             howToApply: [
               "Verify rural eligibility (according to ASGS-RA classification)",
@@ -1730,6 +2236,12 @@
             places: "Approx. 40 domestic places (Orange campus)",
             cost: "$13,558/year (CSP Max)",
             schemes: ["CSU Rural and Regional Admission Scheme", "First Nations Entry Pathway"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "unresearched",
+            gateNote: null,
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["English Standard"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
@@ -1755,6 +2267,12 @@
             places: "Approx. 12 places",
             cost: "$13,558/year (CSP Max)",
             schemes: ["NT Residency Entry Pathway", "First Nations Entry Pathway"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "residency-gated",
+            gateNote: "High priority for NT residents and Indigenous students by design.",
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["English", "Chemistry (recommended)"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
@@ -1781,6 +2299,12 @@
             places: "Approx. 20-30 regional places (Rockhampton / Bundaberg)",
             cost: "$13,558/year (CSP Max)",
             schemes: ["Regional Medical Pathway", "Indigenous entry pathway"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "residency-gated",
+            gateNote: "Exclusively for QLD-rural/other-state-rural pathways (Rockhampton/Bundaberg only) — a metro applicant's UCAT score doesn't meaningfully help here.",
+            confidence: "verified",
+            schemeMeta: {},
             prereqs: ["English", "Chemistry or Biology or Physics"],
             howToApply: [
               "Sit UCAT ANZ in Year 12",
@@ -1806,6 +2330,12 @@
             places: "Approx. 280 total places (domestic + international)",
             cost: "NZD $9,200 - $10,500/year (Domestic equivalent)",
             schemes: ["Regional Rural Admission Scheme (RRAS)", "Maori and Pacific Admission Scheme (MAPAS)"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "unresearched",
+            gateNote: "NZ schools run their own regional/Maori-Pacific quota systems, meaningfully different from Australian state-based rules — not independently checked this cycle.",
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["NCEA Level 3 English & Science subjects"],
             howToApply: [
               "Sit UCAT ANZ in Year 13 (NZ high school)",
@@ -1832,6 +2362,12 @@
             places: "Approx. 282 domestic places",
             cost: "NZD $9,200 - $10,500/year (Domestic equivalent)",
             schemes: ["Maori Entry Pathway", "Indigenous Pacific Entry Pathway", "Rural Section Pathway"],
+            weighting: null,
+            ucatCutoffEstimate: null,
+            gateType: "unresearched",
+            gateNote: "NZ schools run their own regional/Maori-Pacific quota systems, meaningfully different from Australian state-based rules — not independently checked this cycle.",
+            confidence: "unverified",
+            schemeMeta: {},
             prereqs: ["NCEA Level 3 English & Science subjects"],
             howToApply: [
               "Sit UCAT ANZ in Year 13",
@@ -1848,9 +2384,13 @@
         let currentRegion = 'ALL';
         let ucatRequirement = 'ALL';
         let interviewRequirement = 'ALL';
+        let gateRequirement = 'ALL';
         let maxAtar = 100.00;
         let searchQuery = '';
         let currentSort = 'name-asc';
+        let userAtar = null;
+        let userUcat = null;
+        let userState = '';
 
         // DOM elements
         const uniGrid = document.getElementById('uni-grid');
@@ -1862,7 +2402,11 @@
         const atarVal = document.getElementById('atar-val');
         const resetBtn = document.getElementById('reset-btn');
         const sortSelect = document.getElementById('sort-select');
-        
+        const gateFilter = document.getElementById('gate-filter');
+        const userAtarInput = document.getElementById('user-atar-input');
+        const userUcatInput = document.getElementById('user-ucat-input');
+        const userStateSelect = document.getElementById('user-state-select');
+
         const filteredCount = document.getElementById('filtered-count');
         const totalCount = document.getElementById('total-count');
         const statUniCount = document.getElementById('stat-uni-count');
@@ -1881,6 +2425,13 @@
         const drawerPlaces = document.getElementById('drawer-places');
         const drawerUcatDesc = document.getElementById('drawer-ucat-desc');
         const drawerInterviewDesc = document.getElementById('drawer-interview-desc');
+        const drawerGateDesc = document.getElementById('drawer-gate-desc');
+        const drawerMatchRow = document.getElementById('drawer-match-row');
+        const drawerMatchDesc = document.getElementById('drawer-match-desc');
+        const drawerConfidenceTag = document.getElementById('drawer-confidence-tag');
+        const drawerWeightingBar = document.getElementById('drawer-weighting-bar');
+        const drawerWeightingLegend = document.getElementById('drawer-weighting-legend');
+        const drawerWeightingFallback = document.getElementById('drawer-weighting-fallback');
         const drawerPrereqs = document.getElementById('drawer-prereqs');
         const drawerSchemes = document.getElementById('drawer-schemes');
         const drawerSteps = document.getElementById('drawer-steps');
@@ -1891,8 +2442,198 @@
             totalCount.textContent = uniData.length;
             statUniCount.textContent = uniData.length;
             renderUnis();
+            renderTimeline();
             updateActiveFilterCount();
             setupEventListeners();
+        }
+
+        // Gate-type helpers
+        function gateTypeShortLabel(t) {
+            return {
+                'score-driven': 'Score-Driven',
+                'residency-gated': 'Residency-Gated',
+                'space-constrained': 'Limited Seats',
+                'mixed': 'Mixed Gate',
+                'unresearched': 'Not Researched'
+            }[t] || 'Not Researched';
+        }
+
+        function gateTypeLabel(t) {
+            return {
+                'score-driven': 'Score-driven — a sufficiently strong ATAR/UCAT genuinely opens the door here, regardless of home state.',
+                'residency-gated': 'Residency-gated — hard state or rural-residency quotas are the real constraint; a high score alone does not reliably get you an interview.',
+                'space-constrained': 'Space-constrained — score clears the bar, but the applicant pool for this intake is unusually small.',
+                'mixed': 'Mixed gate — a combination of score-driven and residency/rural factors.',
+                'unresearched': 'Not yet independently researched — treat any gate assumption for this school as unconfirmed.'
+            }[t] || 'Not yet independently researched — treat any gate assumption for this school as unconfirmed.';
+        }
+
+        function gateTypeIcon(t) {
+            return {
+                'score-driven': 'fa-bolt',
+                'residency-gated': 'fa-house-lock',
+                'space-constrained': 'fa-hourglass-half',
+                'mixed': 'fa-shuffle',
+                'unresearched': 'fa-circle-question'
+            }[t] || 'fa-circle-question';
+        }
+
+        // Selection-weighting bar (drawer)
+        function renderWeightingBar(uni) {
+            const w = uni.weighting;
+
+            if (!w) {
+                drawerWeightingBar.style.display = 'none';
+                drawerWeightingLegend.style.display = 'none';
+                drawerWeightingFallback.style.display = 'block';
+                return;
+            }
+
+            drawerWeightingBar.style.display = 'flex';
+            drawerWeightingLegend.style.display = 'flex';
+            drawerWeightingFallback.style.display = 'none';
+
+            const segs = [
+                { label: 'ATAR', cls: 'seg-atar', val: w.atar },
+                { label: 'UCAT', cls: 'seg-ucat', val: w.ucat },
+                { label: 'Interview', cls: 'seg-interview', val: w.interview }
+            ];
+            const known = segs.filter(s => s.val != null && s.val > 0);
+            const knownTotal = known.reduce((a, s) => a + s.val, 0);
+            const unknownTotal = Math.max(0, 100 - knownTotal);
+
+            drawerWeightingBar.innerHTML = known.map(s =>
+                `<div class="weighting-segment ${s.cls}" style="width:${s.val}%" title="${s.label} ${s.val}%">${s.val >= 12 ? s.label + ' ' + s.val + '%' : ''}</div>`
+            ).join('') + (unknownTotal > 0
+                ? `<div class="weighting-segment seg-unknown" style="width:${unknownTotal}%" title="Undisclosed ${unknownTotal}%">${unknownTotal >= 12 ? 'Undisclosed' : ''}</div>`
+                : '');
+
+            drawerWeightingLegend.innerHTML = known.map(s =>
+                `<span><span class="dot" style="background: var(${s.cls === 'seg-atar' ? '--primary' : s.cls === 'seg-ucat' ? '--secondary' : '--accent'})"></span>${s.label} ${s.val}%</span>`
+            ).join('') + (unknownTotal > 0 ? `<span><span class="dot" style="background: var(--bg-input); border: 1px solid var(--border-color);"></span>Undisclosed ${unknownTotal}%</span>` : '');
+        }
+
+        function renderConfidenceTag(uni) {
+            const labels = { verified: 'Officially Verified', estimated: 'Third-Party Estimate', unverified: 'Unverified' };
+            const conf = uni.confidence || 'unverified';
+            drawerConfidenceTag.className = `confidence-tag confidence-${conf}`;
+            drawerConfidenceTag.textContent = labels[conf] || 'Unverified';
+            drawerConfidenceTag.title = "Confidence reflects how directly this school's data was checked against its own admissions page.";
+        }
+
+        // Personal Match Estimator
+        function computeMatchStatus(uni, atar, ucat, state) {
+            if (atar == null && ucat == null) return null;
+
+            const atarKnown = atar != null && uni.minAtar > 0;
+            const atarOk = !atarKnown || atar >= uni.minAtar;
+
+            let ucatOk = null; // null = can't evaluate
+            if (uni.ucat === 'Not Required') {
+                ucatOk = true;
+            } else if (ucat != null && uni.ucatCutoffEstimate != null) {
+                ucatOk = ucat >= uni.ucatCutoffEstimate;
+            }
+
+            // Residency / space gates override a pure score read
+            if (uni.gateType === 'residency-gated') {
+                const sameState = state && uni.state.includes(state);
+                if (!sameState) {
+                    return { tier: 'gated', icon: 'fa-house-lock', label: 'Residency-Gated',
+                        reason: "Home-state or rural residency is the real constraint here, not your score." };
+                }
+            }
+            if (uni.gateType === 'space-constrained') {
+                return { tier: 'gated', icon: 'fa-hourglass-half', label: 'Seats Limited',
+                    reason: "Score alone doesn't determine the outcome — the intake for this pathway is unusually small." };
+            }
+
+            if (atarKnown && !atarOk) return { tier: 'unlikely', icon: 'fa-circle-xmark', label: 'Unlikely (ATAR)', reason: 'Your ATAR is below the published minimum for this program.' };
+            if (ucatOk === false) return { tier: 'unlikely', icon: 'fa-circle-xmark', label: 'Unlikely (UCAT)', reason: 'Your UCAT is below the estimated cutoff for this program.' };
+
+            if (ucatOk === null && uni.ucat !== 'Not Required') {
+                return { tier: 'possible', icon: 'fa-circle-question', label: 'Possible (UCAT cutoff unknown)', reason: "We don't have a reliable UCAT cutoff estimate for this school yet." };
+            }
+            if (!atarKnown) {
+                return { tier: 'possible', icon: 'fa-circle-question', label: 'Possible (ATAR unknown)', reason: 'Enter your ATAR above for a fuller estimate.' };
+            }
+
+            return { tier: 'likely', icon: 'fa-circle-check', label: 'Likely', reason: 'Your ATAR and UCAT both clear the published/estimated thresholds for this program.' };
+        }
+
+        function renderMatchBadgeHtml(uni) {
+            const status = computeMatchStatus(uni, userAtar, userUcat, userState);
+            if (!status) return '';
+            return `<span class="badge match-${status.tier}" title="${status.reason}">
+                <i class="fa-solid ${status.icon}"></i> ${status.label}
+            </span>`;
+        }
+
+        function renderDrawerMatch(uni) {
+            const status = computeMatchStatus(uni, userAtar, userUcat, userState);
+            if (!status) {
+                drawerMatchRow.style.display = 'none';
+                return;
+            }
+            drawerMatchRow.style.display = 'flex';
+            drawerMatchDesc.innerHTML = `<span class="badge match-${status.tier}"><i class="fa-solid ${status.icon}"></i> ${status.label}</span> — ${status.reason}`;
+        }
+
+        // Application Timeline
+        function getTimelineEntries(uni) {
+            if (uni.timeline && uni.timeline.length) return uni.timeline;
+            return [{ label: 'Application Closes', date: null, dateLabel: uni.closes, note: uni.closesText, type: 'deadline', eligibility: 'All applicants' }];
+        }
+
+        function buildTimelineEvents() {
+            const events = [];
+            uniData.forEach(uni => {
+                getTimelineEntries(uni).forEach(p => events.push({ uniId: uni.id, uniName: uni.name, gateType: uni.gateType, ...p }));
+            });
+            return events;
+        }
+
+        function monthKeyOf(evt) {
+            if (evt.date) {
+                const d = new Date(evt.date);
+                if (!isNaN(d.getTime())) return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+            }
+            return 'unconfirmed';
+        }
+
+        function formatMonthLabel(key) {
+            const [y, m] = key.split('-').map(Number);
+            const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            return `${months[m - 1]} ${y}`;
+        }
+
+        function formatDate(dateStr) {
+            const d = new Date(dateStr);
+            if (isNaN(d.getTime())) return dateStr;
+            return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        function renderTimeline() {
+            const events = buildTimelineEvents();
+            const groups = {};
+            events.forEach(e => { const k = monthKeyOf(e); (groups[k] = groups[k] || []).push(e); });
+
+            const orderedKeys = Object.keys(groups).filter(k => k !== 'unconfirmed').sort();
+            if (groups['unconfirmed']) orderedKeys.push('unconfirmed');
+
+            const track = document.getElementById('timeline-track');
+            if (!track) return;
+
+            track.innerHTML = orderedKeys.map(k => {
+                const label = k === 'unconfirmed' ? 'Date Unconfirmed / TBC' : formatMonthLabel(k);
+                const pts = groups[k].map(e => `
+                    <div class="timeline-point">
+                        <span class="tp-school">${e.uniName}</span>
+                        <span class="tp-label">${e.label}${e.date ? ' — ' + formatDate(e.date) : (e.dateLabel ? ' — ' + e.dateLabel : '')}</span>
+                        ${e.eligibility && e.eligibility !== 'All applicants' ? `<span class="tp-eligibility"><i class="fa-solid fa-triangle-exclamation"></i> ${e.eligibility}</span>` : ''}
+                    </div>`).join('');
+                return `<div class="timeline-month-group"><div class="timeline-month-label">${label}</div><div class="timeline-points">${pts}</div></div>`;
+            }).join('');
         }
 
         // Render Cards
@@ -1949,6 +2690,10 @@
                             <span class="badge ${uni.interview === 'Required' ? 'badge-secondary' : 'badge-muted'}">
                                 <i class="fa-solid ${uni.interview === 'Required' ? 'fa-comments' : 'fa-comment-slash'}"></i> Interview: ${uni.interview === 'Required' ? 'Yes' : 'No'}
                             </span>
+                            <span class="badge gate-${uni.gateType}" title="${gateTypeLabel(uni.gateType)}">
+                                <i class="fa-solid ${gateTypeIcon(uni.gateType)}"></i> ${gateTypeShortLabel(uni.gateType)}
+                            </span>
+                            ${renderMatchBadgeHtml(uni)}
                         </div>
                     </div>
                 `;
@@ -1974,11 +2719,14 @@
                 // Interview
                 const matchesInterview = interviewRequirement === 'ALL' || uni.interview === interviewRequirement;
 
+                // Admission Gate
+                const matchesGate = gateRequirement === 'ALL' || uni.gateType === gateRequirement;
+
                 // ATAR
                 // Note: Auckland/Otago and specialized pathway listings are handled gracefully
                 const matchesAtar = uni.minAtar <= maxAtar;
 
-                return matchesSearch && matchesRegion && matchesUcat && matchesInterview && matchesAtar;
+                return matchesSearch && matchesRegion && matchesUcat && matchesInterview && matchesGate && matchesAtar;
             });
 
             // Sort
@@ -2007,7 +2755,12 @@
             
             drawerUcatDesc.innerHTML = `<strong>${uni.ucat}:</strong> ${uni.ucatText || (uni.ucat === 'Required' ? 'Must sit the UCAT ANZ in 2026. Results contribute to selection.' : 'This program does not require the UCAT.')}`;
             drawerInterviewDesc.innerHTML = `<strong>${uni.interview === 'Required' ? 'Required' : 'Not Required'}:</strong> ${uni.interviewText}`;
-            
+            drawerGateDesc.innerHTML = `${gateTypeLabel(uni.gateType)}${uni.gateNote ? ' — ' + uni.gateNote : ''}`;
+
+            renderWeightingBar(uni);
+            renderConfidenceTag(uni);
+            renderDrawerMatch(uni);
+
             // Prerequisites
             drawerPrereqs.innerHTML = '';
             uni.prereqs.forEach(p => {
@@ -2026,6 +2779,15 @@
                     tag.style.borderColor = 'var(--primary-glow)';
                     tag.style.color = 'var(--primary)';
                     tag.textContent = s;
+                    const bondedStatus = uni.schemeMeta && uni.schemeMeta[s];
+                    if (bondedStatus === 'bonded') {
+                        const flag = document.createElement('a');
+                        flag.href = '#concepts-section';
+                        flag.className = 'bonded-flag';
+                        flag.title = 'This scheme carries a return-of-service (bonded) obligation. See "Bonded vs Unbonded Offers" above.';
+                        flag.innerHTML = '<i class="fa-solid fa-lock"></i>';
+                        tag.appendChild(flag);
+                    }
                     drawerSchemes.appendChild(tag);
                 });
             } else {
@@ -2086,6 +2848,7 @@
             if (currentRegion !== 'ALL') count++;
             if (ucatRequirement !== 'ALL') count++;
             if (interviewRequirement !== 'ALL') count++;
+            if (gateRequirement !== 'ALL') count++;
             if (maxAtar < 100) count++;
 
             const badge = document.getElementById('mobile-filter-badge');
@@ -2135,6 +2898,27 @@
                 applyFilters();
             });
 
+            gateFilter.addEventListener('change', (e) => {
+                gateRequirement = e.target.value;
+                applyFilters();
+            });
+
+            // Personal Match Estimator
+            userAtarInput.addEventListener('input', (e) => {
+                userAtar = e.target.value === '' ? null : parseFloat(e.target.value);
+                renderUnis();
+            });
+
+            userUcatInput.addEventListener('input', (e) => {
+                userUcat = e.target.value === '' ? null : parseFloat(e.target.value);
+                renderUnis();
+            });
+
+            userStateSelect.addEventListener('change', (e) => {
+                userState = e.target.value;
+                renderUnis();
+            });
+
             // ATAR Slider
             atarSlider.addEventListener('input', (e) => {
                 maxAtar = parseFloat(e.target.value);
@@ -2162,13 +2946,23 @@
                 
                 interviewFilter.value = 'ALL';
                 interviewRequirement = 'ALL';
-                
+
+                gateFilter.value = 'ALL';
+                gateRequirement = 'ALL';
+
                 atarSlider.value = 100;
                 maxAtar = 100.00;
                 atarVal.textContent = '100.00';
-                
+
                 sortSelect.value = 'name-asc';
                 currentSort = 'name-asc';
+
+                userAtarInput.value = '';
+                userAtar = null;
+                userUcatInput.value = '';
+                userUcat = null;
+                userStateSelect.value = '';
+                userState = '';
 
                 applyFilters();
             });
