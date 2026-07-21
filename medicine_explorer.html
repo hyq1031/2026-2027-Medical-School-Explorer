@@ -1452,7 +1452,12 @@
                             <option value="NT">NT</option>
                             <option value="NZ">NZ</option>
                         </select>
-                        <p class="filter-hint">Estimate only, based on disclosed/estimated cutoffs where available. Not a guarantee — especially at residency-gated or space-constrained schools.</p>
+                        <select id="match-filter-select" class="filter-select match-input">
+                            <option value="ALL">Show: All Schools</option>
+                            <option value="REALISTIC">Show: Likely + Possible Only</option>
+                            <option value="LONGSHOT">Show: Unlikely / Gated Only</option>
+                        </select>
+                        <p class="filter-hint">Enter your ATAR and/or UCAT above, then use "Show" to narrow the list to schools that match — instead of scrolling through all 24.</p>
                     </div>
 
                     <button class="btn btn-secondary" id="reset-btn" style="width: 100%;">
@@ -2417,6 +2422,7 @@
         let userAtar = null;
         let userUcat = null;
         let userState = '';
+        let matchFilterMode = 'ALL';
 
         // DOM elements
         const uniGrid = document.getElementById('uni-grid');
@@ -2432,6 +2438,7 @@
         const userAtarInput = document.getElementById('user-atar-input');
         const userUcatInput = document.getElementById('user-ucat-input');
         const userStateSelect = document.getElementById('user-state-select');
+        const matchFilterSelect = document.getElementById('match-filter-select');
 
         const filteredCount = document.getElementById('filtered-count');
         const totalCount = document.getElementById('total-count');
@@ -2748,11 +2755,23 @@
                 // Admission Gate
                 const matchesGate = gateRequirement === 'ALL' || uni.gateType === gateRequirement;
 
+                // Match Estimator "Show" filter — only applies once a profile is entered
+                let matchesMatchFilter = true;
+                if (matchFilterMode !== 'ALL' && (userAtar != null || userUcat != null)) {
+                    const status = computeMatchStatus(uni, userAtar, userUcat, userState);
+                    const tier = status ? status.tier : null;
+                    if (matchFilterMode === 'REALISTIC') {
+                        matchesMatchFilter = tier === 'likely' || tier === 'possible';
+                    } else if (matchFilterMode === 'LONGSHOT') {
+                        matchesMatchFilter = tier === 'unlikely' || tier === 'gated';
+                    }
+                }
+
                 // ATAR
                 // Note: Auckland/Otago and specialized pathway listings are handled gracefully
                 const matchesAtar = uni.minAtar <= maxAtar;
 
-                return matchesSearch && matchesRegion && matchesUcat && matchesInterview && matchesGate && matchesAtar;
+                return matchesSearch && matchesRegion && matchesUcat && matchesInterview && matchesGate && matchesAtar && matchesMatchFilter;
             });
 
             // Sort
@@ -2875,6 +2894,7 @@
             if (ucatRequirement !== 'ALL') count++;
             if (interviewRequirement !== 'ALL') count++;
             if (gateRequirement !== 'ALL') count++;
+            if (matchFilterMode !== 'ALL' && (userAtar != null || userUcat != null)) count++;
             if (maxAtar < 100) count++;
 
             const badge = document.getElementById('mobile-filter-badge');
@@ -2932,17 +2952,22 @@
             // Personal Match Estimator
             userAtarInput.addEventListener('input', (e) => {
                 userAtar = e.target.value === '' ? null : parseFloat(e.target.value);
-                renderUnis();
+                applyFilters();
             });
 
             userUcatInput.addEventListener('input', (e) => {
                 userUcat = e.target.value === '' ? null : parseFloat(e.target.value);
-                renderUnis();
+                applyFilters();
             });
 
             userStateSelect.addEventListener('change', (e) => {
                 userState = e.target.value;
-                renderUnis();
+                applyFilters();
+            });
+
+            matchFilterSelect.addEventListener('change', (e) => {
+                matchFilterMode = e.target.value;
+                applyFilters();
             });
 
             // ATAR Slider
@@ -2989,6 +3014,8 @@
                 userUcat = null;
                 userStateSelect.value = '';
                 userState = '';
+                matchFilterSelect.value = 'ALL';
+                matchFilterMode = 'ALL';
 
                 applyFilters();
             });
