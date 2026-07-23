@@ -876,6 +876,37 @@
             border: 1px solid hsla(220, 10%, 55%, 0.2);
         }
 
+        .badge-above-threshold {
+            background-color: var(--danger-glow);
+            color: var(--danger);
+            border: 1px solid hsla(355, 55%, 48%, 0.25);
+        }
+
+        .uni-card.card-above-threshold {
+            opacity: 0.6;
+        }
+
+        .uni-card.card-above-threshold:hover {
+            opacity: 1;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.55rem;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        .checkbox-row input[type="checkbox"] {
+            margin-top: 0.15rem;
+            accent-color: var(--primary);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
         /* Details Drawer (Slides in from Right) */
         .drawer-overlay {
             position: fixed;
@@ -1445,6 +1476,13 @@
                             <input type="range" min="2000" max="2700" step="25" value="2700" class="slider" id="ucat-slider">
                         </div>
                         <p class="filter-hint">Only the schools with a published or estimated UCAT cutoff are narrowed by this slider — the rest don't disclose one, so they're never hidden by it.</p>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <label class="checkbox-row">
+                            <input type="checkbox" id="show-above-threshold-check">
+                            <span>Also show schools above these thresholds — marked <strong>Above Threshold</strong> instead of hidden</span>
+                        </label>
                     </div>
 
                     <div class="sidebar-section">
@@ -2429,6 +2467,7 @@
         let gateRequirement = 'ALL';
         let maxAtar = 100.00;
         let maxUcatCutoff = 2700;
+        let showAboveThreshold = false;
         let searchQuery = '';
         let currentSort = 'name-asc';
         let userAtar = null;
@@ -2446,6 +2485,7 @@
         const atarVal = document.getElementById('atar-val');
         const ucatSlider = document.getElementById('ucat-slider');
         const ucatVal = document.getElementById('ucat-val');
+        const showAboveThresholdCheck = document.getElementById('show-above-threshold-check');
         const resetBtn = document.getElementById('reset-btn');
         const sortSelect = document.getElementById('sort-select');
         const gateFilter = document.getElementById('gate-filter');
@@ -2616,6 +2656,22 @@
             </span>`;
         }
 
+        // True when the "Also show schools above these thresholds" checkbox is on
+        // and this school would otherwise have been hidden by the ATAR/UCAT sliders.
+        function isAboveThreshold(uni) {
+            if (!showAboveThreshold) return false;
+            const aboveAtar = uni.minAtar > maxAtar;
+            const aboveUcat = uni.ucatCutoffEstimate != null && uni.ucatCutoffEstimate > maxUcatCutoff;
+            return aboveAtar || aboveUcat;
+        }
+
+        function renderThresholdBadgeHtml(uni) {
+            if (!isAboveThreshold(uni)) return '';
+            return `<span class="badge badge-above-threshold" title="Above the ATAR/UCAT threshold set by the sliders">
+                <i class="fa-solid fa-arrow-trend-up"></i> Above Threshold
+            </span>`;
+        }
+
         function renderDrawerMatch(uni) {
             const status = computeMatchStatus(uni, userAtar, userUcat, userState);
             if (!status) {
@@ -2701,7 +2757,7 @@
 
             filteredUnis.forEach(uni => {
                 const card = document.createElement('div');
-                card.className = 'uni-card';
+                card.className = 'uni-card' + (isAboveThreshold(uni) ? ' card-above-threshold' : '');
                 card.addEventListener('click', () => openDrawer(uni));
 
                 const regionTagClass = uni.country === 'NZ' ? 'card-location card-nz-tag' : 'card-location';
@@ -2741,6 +2797,7 @@
                                 <i class="fa-solid ${gateTypeIcon(uni.gateType)}"></i> ${gateTypeShortLabel(uni.gateType)}
                             </span>
                             ${renderMatchBadgeHtml(uni)}
+                            ${renderThresholdBadgeHtml(uni)}
                         </div>
                     </div>
                 `;
@@ -2783,10 +2840,10 @@
 
                 // ATAR
                 // Note: Auckland/Otago and specialized pathway listings are handled gracefully
-                const matchesAtar = uni.minAtar <= maxAtar;
+                const matchesAtar = showAboveThreshold || uni.minAtar <= maxAtar;
 
                 // UCAT cutoff slider — schools without a published/estimated cutoff are never hidden by it
-                const matchesUcatCutoff = uni.ucatCutoffEstimate == null || uni.ucatCutoffEstimate <= maxUcatCutoff;
+                const matchesUcatCutoff = showAboveThreshold || uni.ucatCutoffEstimate == null || uni.ucatCutoffEstimate <= maxUcatCutoff;
 
                 return matchesSearch && matchesRegion && matchesUcat && matchesInterview && matchesGate && matchesAtar && matchesUcatCutoff && matchesMatchFilter;
             });
@@ -2914,6 +2971,7 @@
             if (matchFilterMode !== 'ALL' && (userAtar != null || userUcat != null)) count++;
             if (maxAtar < 100) count++;
             if (maxUcatCutoff < 2700) count++;
+            if (showAboveThreshold) count++;
 
             const badge = document.getElementById('mobile-filter-badge');
             if (badge) {
@@ -3002,6 +3060,12 @@
                 applyFilters();
             });
 
+            // Show schools above threshold too
+            showAboveThresholdCheck.addEventListener('change', (e) => {
+                showAboveThreshold = e.target.checked;
+                applyFilters();
+            });
+
             // Sort Selector
             sortSelect.addEventListener('change', (e) => {
                 currentSort = e.target.value;
@@ -3033,6 +3097,9 @@
                 ucatSlider.value = 2700;
                 maxUcatCutoff = 2700;
                 ucatVal.textContent = '2700';
+
+                showAboveThresholdCheck.checked = false;
+                showAboveThreshold = false;
 
                 sortSelect.value = 'name-asc';
                 currentSort = 'name-asc';
