@@ -890,23 +890,6 @@
             opacity: 1;
         }
 
-        .checkbox-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.55rem;
-            font-size: 0.82rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            line-height: 1.4;
-        }
-
-        .checkbox-row input[type="checkbox"] {
-            margin-top: 0.15rem;
-            accent-color: var(--primary);
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
         /* Details Drawer (Slides in from Right) */
         .drawer-overlay {
             position: fixed;
@@ -1479,10 +1462,13 @@
                     </div>
 
                     <div class="sidebar-section">
-                        <label class="checkbox-row">
-                            <input type="checkbox" id="show-above-threshold-check">
-                            <span>Also show schools above these thresholds — marked <strong>Above Threshold</strong> instead of hidden</span>
-                        </label>
+                        <h3 class="section-title"><i class="fa-solid fa-filter-circle-xmark"></i> Threshold Display</h3>
+                        <select id="threshold-mode-select" class="filter-select">
+                            <option value="WITHIN">Within Threshold Only</option>
+                            <option value="ALL">All Schools (mark Above Threshold)</option>
+                            <option value="ABOVE">Above Threshold Only</option>
+                        </select>
+                        <p class="filter-hint">Controls how the ATAR/UCAT sliders above treat schools whose requirement exceeds your selected threshold.</p>
                     </div>
 
                     <div class="sidebar-section">
@@ -2467,7 +2453,7 @@
         let gateRequirement = 'ALL';
         let maxAtar = 100.00;
         let maxUcatCutoff = 2700;
-        let showAboveThreshold = false;
+        let thresholdMode = 'WITHIN'; // WITHIN | ALL | ABOVE
         let searchQuery = '';
         let currentSort = 'name-asc';
         let userAtar = null;
@@ -2485,7 +2471,7 @@
         const atarVal = document.getElementById('atar-val');
         const ucatSlider = document.getElementById('ucat-slider');
         const ucatVal = document.getElementById('ucat-val');
-        const showAboveThresholdCheck = document.getElementById('show-above-threshold-check');
+        const thresholdModeSelect = document.getElementById('threshold-mode-select');
         const resetBtn = document.getElementById('reset-btn');
         const sortSelect = document.getElementById('sort-select');
         const gateFilter = document.getElementById('gate-filter');
@@ -2656,17 +2642,17 @@
             </span>`;
         }
 
-        // True when the "Also show schools above these thresholds" checkbox is on
-        // and this school would otherwise have been hidden by the ATAR/UCAT sliders.
-        function isAboveThreshold(uni) {
-            if (!showAboveThreshold) return false;
-            const aboveAtar = uni.minAtar > maxAtar;
-            const aboveUcat = uni.ucatCutoffEstimate != null && uni.ucatCutoffEstimate > maxUcatCutoff;
-            return aboveAtar || aboveUcat;
+        // True when this school's ATAR or UCAT requirement exceeds the slider thresholds,
+        // regardless of the current Threshold Display mode.
+        function isOverThreshold(uni) {
+            const overAtar = uni.minAtar > maxAtar;
+            const overUcat = uni.ucatCutoffEstimate != null && uni.ucatCutoffEstimate > maxUcatCutoff;
+            return overAtar || overUcat;
         }
 
         function renderThresholdBadgeHtml(uni) {
-            if (!isAboveThreshold(uni)) return '';
+            if (thresholdMode === 'WITHIN') return '';
+            if (!isOverThreshold(uni)) return '';
             return `<span class="badge badge-above-threshold" title="Above the ATAR/UCAT threshold set by the sliders">
                 <i class="fa-solid fa-arrow-trend-up"></i> Above Threshold
             </span>`;
@@ -2757,7 +2743,8 @@
 
             filteredUnis.forEach(uni => {
                 const card = document.createElement('div');
-                card.className = 'uni-card' + (isAboveThreshold(uni) ? ' card-above-threshold' : '');
+                const dimCard = thresholdMode === 'ALL' && isOverThreshold(uni);
+                card.className = 'uni-card' + (dimCard ? ' card-above-threshold' : '');
                 card.addEventListener('click', () => openDrawer(uni));
 
                 const regionTagClass = uni.country === 'NZ' ? 'card-location card-nz-tag' : 'card-location';
@@ -2808,6 +2795,14 @@
         }
 
         // Apply Filters & Sorting
+        // Scrolls the results grid back into view — called after discrete filter
+        // changes (not per-keystroke/per-drag) so a new result set is never left
+        // showing mid-scroll, misaligned with the "Showing X of Y" count.
+        function scrollResultsToTop() {
+            const header = document.querySelector('.results-header');
+            if (header) header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
         function applyFilters() {
             filteredUnis = uniData.filter(uni => {
                 // Search query
@@ -2838,14 +2833,14 @@
                     }
                 }
 
-                // ATAR
-                // Note: Auckland/Otago and specialized pathway listings are handled gracefully
-                const matchesAtar = showAboveThreshold || uni.minAtar <= maxAtar;
+                // ATAR/UCAT threshold sliders — schools without a published/estimated UCAT cutoff
+                // are never counted as "over" the UCAT threshold, since we don't guess one.
+                const overThreshold = isOverThreshold(uni);
+                let matchesThreshold = true;
+                if (thresholdMode === 'WITHIN') matchesThreshold = !overThreshold;
+                else if (thresholdMode === 'ABOVE') matchesThreshold = overThreshold;
 
-                // UCAT cutoff slider — schools without a published/estimated cutoff are never hidden by it
-                const matchesUcatCutoff = showAboveThreshold || uni.ucatCutoffEstimate == null || uni.ucatCutoffEstimate <= maxUcatCutoff;
-
-                return matchesSearch && matchesRegion && matchesUcat && matchesInterview && matchesGate && matchesAtar && matchesUcatCutoff && matchesMatchFilter;
+                return matchesSearch && matchesRegion && matchesUcat && matchesInterview && matchesGate && matchesThreshold && matchesMatchFilter;
             });
 
             // Sort
@@ -2971,7 +2966,7 @@
             if (matchFilterMode !== 'ALL' && (userAtar != null || userUcat != null)) count++;
             if (maxAtar < 100) count++;
             if (maxUcatCutoff < 2700) count++;
-            if (showAboveThreshold) count++;
+            if (thresholdMode !== 'WITHIN') count++;
 
             const badge = document.getElementById('mobile-filter-badge');
             if (badge) {
@@ -3006,6 +3001,7 @@
                     e.target.classList.add('active');
                     currentRegion = e.target.getAttribute('data-state');
                     applyFilters();
+                    scrollResultsToTop();
                 }
             });
 
@@ -3013,16 +3009,19 @@
             ucatFilter.addEventListener('change', (e) => {
                 ucatRequirement = e.target.value;
                 applyFilters();
+                scrollResultsToTop();
             });
 
             interviewFilter.addEventListener('change', (e) => {
                 interviewRequirement = e.target.value;
                 applyFilters();
+                scrollResultsToTop();
             });
 
             gateFilter.addEventListener('change', (e) => {
                 gateRequirement = e.target.value;
                 applyFilters();
+                scrollResultsToTop();
             });
 
             // Personal Match Estimator
@@ -3039,31 +3038,37 @@
             userStateSelect.addEventListener('change', (e) => {
                 userState = e.target.value;
                 applyFilters();
+                scrollResultsToTop();
             });
 
             matchFilterSelect.addEventListener('change', (e) => {
                 matchFilterMode = e.target.value;
                 applyFilters();
+                scrollResultsToTop();
             });
 
-            // ATAR Slider
+            // ATAR Slider — 'input' fires continuously while dragging (live filter update,
+            // no scroll); 'change' fires once on release (scroll to top of the settled result).
             atarSlider.addEventListener('input', (e) => {
                 maxAtar = parseFloat(e.target.value);
                 atarVal.textContent = maxAtar === 100 ? '100.00' : maxAtar.toFixed(2);
                 applyFilters();
             });
+            atarSlider.addEventListener('change', scrollResultsToTop);
 
-            // UCAT Slider
+            // UCAT Slider — same live-drag vs. release-scroll split as the ATAR slider.
             ucatSlider.addEventListener('input', (e) => {
                 maxUcatCutoff = parseInt(e.target.value, 10);
                 ucatVal.textContent = maxUcatCutoff;
                 applyFilters();
             });
+            ucatSlider.addEventListener('change', scrollResultsToTop);
 
-            // Show schools above threshold too
-            showAboveThresholdCheck.addEventListener('change', (e) => {
-                showAboveThreshold = e.target.checked;
+            // Threshold display mode
+            thresholdModeSelect.addEventListener('change', (e) => {
+                thresholdMode = e.target.value;
                 applyFilters();
+                scrollResultsToTop();
             });
 
             // Sort Selector
@@ -3098,8 +3103,8 @@
                 maxUcatCutoff = 2700;
                 ucatVal.textContent = '2700';
 
-                showAboveThresholdCheck.checked = false;
-                showAboveThreshold = false;
+                thresholdModeSelect.value = 'WITHIN';
+                thresholdMode = 'WITHIN';
 
                 sortSelect.value = 'name-asc';
                 currentSort = 'name-asc';
@@ -3114,6 +3119,7 @@
                 matchFilterMode = 'ALL';
 
                 applyFilters();
+                scrollResultsToTop();
             });
 
             // Drawer closes
