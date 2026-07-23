@@ -1437,6 +1437,17 @@
                     </div>
 
                     <div class="sidebar-section">
+                        <div class="slider-container">
+                            <div class="slider-labels">
+                                <span class="section-title" style="margin: 0;"><i class="fa-solid fa-sliders"></i> Max Min UCAT</span>
+                                <span class="slider-value" id="ucat-val">2700</span>
+                            </div>
+                            <input type="range" min="2000" max="2700" step="25" value="2700" class="slider" id="ucat-slider">
+                        </div>
+                        <p class="filter-hint">Only the schools with a published or estimated UCAT cutoff are narrowed by this slider — the rest don't disclose one, so they're never hidden by it.</p>
+                    </div>
+
+                    <div class="sidebar-section">
                         <h3 class="section-title"><i class="fa-solid fa-user-check"></i> Your Profile (Match Estimator)</h3>
                         <input type="number" id="user-atar-input" class="search-input match-input" placeholder="Your ATAR (e.g. 97.50)" min="0" max="100" step="0.05">
                         <input type="number" id="user-ucat-input" class="search-input match-input" placeholder="Your UCAT total (e.g. 2400, out of 2700)" min="300" max="2700" step="10">
@@ -2417,6 +2428,7 @@
         let interviewRequirement = 'ALL';
         let gateRequirement = 'ALL';
         let maxAtar = 100.00;
+        let maxUcatCutoff = 2700;
         let searchQuery = '';
         let currentSort = 'name-asc';
         let userAtar = null;
@@ -2432,6 +2444,8 @@
         const interviewFilter = document.getElementById('interview-filter');
         const atarSlider = document.getElementById('atar-slider');
         const atarVal = document.getElementById('atar-val');
+        const ucatSlider = document.getElementById('ucat-slider');
+        const ucatVal = document.getElementById('ucat-val');
         const resetBtn = document.getElementById('reset-btn');
         const sortSelect = document.getElementById('sort-select');
         const gateFilter = document.getElementById('gate-filter');
@@ -2771,7 +2785,10 @@
                 // Note: Auckland/Otago and specialized pathway listings are handled gracefully
                 const matchesAtar = uni.minAtar <= maxAtar;
 
-                return matchesSearch && matchesRegion && matchesUcat && matchesInterview && matchesGate && matchesAtar && matchesMatchFilter;
+                // UCAT cutoff slider — schools without a published/estimated cutoff are never hidden by it
+                const matchesUcatCutoff = uni.ucatCutoffEstimate == null || uni.ucatCutoffEstimate <= maxUcatCutoff;
+
+                return matchesSearch && matchesRegion && matchesUcat && matchesInterview && matchesGate && matchesAtar && matchesUcatCutoff && matchesMatchFilter;
             });
 
             // Sort
@@ -2896,6 +2913,7 @@
             if (gateRequirement !== 'ALL') count++;
             if (matchFilterMode !== 'ALL' && (userAtar != null || userUcat != null)) count++;
             if (maxAtar < 100) count++;
+            if (maxUcatCutoff < 2700) count++;
 
             const badge = document.getElementById('mobile-filter-badge');
             if (badge) {
@@ -2977,6 +2995,13 @@
                 applyFilters();
             });
 
+            // UCAT Slider
+            ucatSlider.addEventListener('input', (e) => {
+                maxUcatCutoff = parseInt(e.target.value, 10);
+                ucatVal.textContent = maxUcatCutoff;
+                applyFilters();
+            });
+
             // Sort Selector
             sortSelect.addEventListener('change', (e) => {
                 currentSort = e.target.value;
@@ -3004,6 +3029,10 @@
                 atarSlider.value = 100;
                 maxAtar = 100.00;
                 atarVal.textContent = '100.00';
+
+                ucatSlider.value = 2700;
+                maxUcatCutoff = 2700;
+                ucatVal.textContent = '2700';
 
                 sortSelect.value = 'name-asc';
                 currentSort = 'name-asc';
