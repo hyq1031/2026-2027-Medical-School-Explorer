@@ -21,3 +21,6 @@ Zero-dependency single-page HTML/CSS/JS app: AU/NZ undergrad medicine admissions
 
 ## Design tokens (current palette, post 2026-07 redesign)
 Brass/verdigris/oxblood on near-black — replaced the original teal/purple SaaS palette. All colors are CSS custom properties in `:root` (`--primary` = brass `hsl(40,68%,56%)`, `--secondary` = verdigris `hsl(168,42%,40%)`, `--accent` = oxblood `hsl(16,52%,42%)`). Fonts: Fraunces (display), Inter (body), JetBrains Mono (data/mono). Re-theme by editing tokens only — don't hardcode new color literals in component CSS.
+
+## Data-verification sweeper
+Say **"run the sweeper"** to re-check `uniData` school records against live official/TAC sources and burn down the unresearched backlog. Skill: `.claude/skills/sweeper/SKILL.md`. Design rationale: `EXPLORER-SWEEPER-SPEC.md`. Ledger/reports/proposals live in `sweeper/`. It is L1 (report-only) by default — it never edits the HTML files or touches git without Kevin approving specific proposals in-session, and never pushes without an explicit "commit and push" that turn.
