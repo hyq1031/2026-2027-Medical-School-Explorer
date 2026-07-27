@@ -1517,6 +1517,8 @@
                             <option value="name-asc">University Name (A-Z)</option>
                             <option value="atar-desc">Min ATAR (Highest First)</option>
                             <option value="atar-asc">Min ATAR (Lowest First)</option>
+                            <option value="opens-asc">Application Opens (Earliest First)</option>
+                            <option value="closes-asc">Application Closes (Earliest First)</option>
                         </select>
                     </div>
                 </div>
@@ -1570,6 +1572,14 @@
                     <div class="info-cell">
                         <span class="info-label">Domestic Places</span>
                         <span class="info-value" id="drawer-places">Approx. 40</span>
+                    </div>
+                    <div class="info-cell">
+                        <span class="info-label">Applications Open</span>
+                        <span class="info-value" id="drawer-opens" title="">TBC</span>
+                    </div>
+                    <div class="info-cell">
+                        <span class="info-label">Applications Close</span>
+                        <span class="info-value" id="drawer-closes" title="">TBC</span>
                     </div>
                 </div>
             </div>
@@ -1663,8 +1673,10 @@
             program: "Bachelor of Biomedicine/Science (Provisional) & Doctor of Medicine",
             minAtar: 99.90,
             minAtarText: "99.90 (CSP) / 99.00 - 99.85 (FFP)",
-            closes: "28 September 2026",
-            closesText: "28 September 2026",
+            opens: "TBC",
+            opensText: "Not independently confirmed this session — GEMSAS (see closesText) typically opens in early May.",
+            closes: "29 May 2026",
+            closesText: "29 May 2026, 5pm AEST — corrected 2026-07-27: this is a graduate-entry MD via GEMSAS (GAMSAT-based), not VTAC. The previously recorded '28 September 2026' was the VTAC undergrad date and doesn't apply to this direct MD application. North Western Pathway applicants get an extension to 8 June. Source: study.unimelb.edu.au official how-to-apply page.",
             ucat: "Required",
             interview: "Required",
             interviewText: "Multiple Mini Interview (MMI)",
@@ -1680,9 +1692,9 @@
             schemeMeta: {},
             prereqs: ["English", "Chemistry", "Biology (or equivalent)"],
             howToApply: [
-              "Register and sit UCAT ANZ in Year 12",
-              "Apply via VTAC (Victorian Tertiary Admissions Centre)",
-              "Submit University of Melbourne Direct Application for specific pathways",
+              "Complete an eligible undergraduate degree (GAMSAT typically required)",
+              "Apply via GEMSAS (Graduate Entry Medical School Admissions System) — not VTAC",
+              "Submit before the GEMSAS deadline (29 May, 5pm AEST)",
               "Complete the Multi Mini Interview (MMI) if shortlisted"
             ],
             officialUrl: "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-medicine/"
@@ -1695,8 +1707,10 @@
             program: "Bachelor of Arts/Science & Doctor of Medicine (Double Degree)",
             minAtar: 99.95,
             minAtarText: "99.95 (Lower for MySydney & Indigenous pathways)",
-            closes: "TBC December 2026",
-            closesText: "TBC December 2026",
+            opens: "8 April 2026",
+            opensText: "General UAC portal open date (not Sydney-specific).",
+            closes: "13 December 2026",
+            closesText: "13 December 2026 (assessment day 1 preference deadline) — refined 2026-07-27 from 'TBC December 2026'. A second window exists for assessment day 2: 10 January 2027. Source: UAC medicine key-dates page. General UAC final closing date for all semester 1 2027 courses is 5 Feb 2027 (outer bound, not medicine-specific).",
             ucat: "Not Required",
             interview: "Required",
             interviewText: "Online Assessment Day (Group Interview & Written Test)",
@@ -1727,8 +1741,10 @@
             program: "Bachelor of Medical Studies / Doctor of Medicine",
             minAtar: 96.00,
             minAtarText: "96.00 (Competitive is typically 99.60+)",
-            closes: "TBC",
-            closesText: "TBC (UAC dates apply - late Sep/early Oct 2026)",
+            opens: "8 April 2026",
+            opensText: "General UAC portal open date (not UNSW-specific) — estimated.",
+            closes: "30 September 2026",
+            closesText: "30 September 2026 — confirmed 2026-07-27 via UAC's medicine key-dates page (was 'TBC').",
             ucat: "Required",
             ucatText: "Required. UNSW does not publish its ranking algorithm — its own admissions page states \"we do not disclose the ranking algorithm applied.\" Scores are not averaged: a strong result in one measure (ATAR, UCAT, or interview) does not compensate for a weak one elsewhere.",
             interview: "Required",
@@ -1763,8 +1779,10 @@
             program: "Joint Medical Program (BMedSci + MD)",
             minAtar: 94.30,
             minAtarText: "94.30 (85.00 for Rural applicants)",
+            opens: "8 April 2026",
+            opensText: "General UAC portal open date (not JMP-specific) — estimated.",
             closes: "30 September 2026",
-            closesText: "30 September 2026",
+            closesText: "30 September 2026 — re-confirmed 2026-07-27 via UAC's medicine key-dates page (1 Dec 2026 for a smaller category of applicants). Direct-application deadline is also 30 Sep 2026, no separate gap.",
             ucat: "Required",
             ucatText: "Required, but not weighted — used for the initial interview-invite ranking (UCAT ANZ aggregate), then again only as a tiebreaker after the interview stage. SJT is reportedly being dropped from JMP selection from the 2027 entry cycle onward.",
             interview: "Required",
@@ -1799,8 +1817,10 @@
             program: "Doctor of Medicine (MD)",
             minAtar: 95.50,
             minAtarText: "95.50 (General) / 93.50 (Greater Western Sydney subquota) / 91.50 (Rural)",
+            opens: "8 April 2026",
+            opensText: "Confirmed 2026-07-27 directly on WSU's own important-dates page: \"8 April 2026 - Applications open via UAC.\"",
             closes: "30 September 2026",
-            closesText: "30 September 2026",
+            closesText: "30 September 2026 — re-confirmed 2026-07-27 on WSU's own page: \"Late applications will not be considered.\"",
             ucat: "Required",
             ucatText: "Required. A separately weighted UCAT score (individual sections, e.g. Verbal Reasoning, may be weighted differently to the flat total) determines who gets an interview invite. UCAT then counts again toward the final offer.",
             interview: "Required",
@@ -1834,8 +1854,10 @@
             program: "Bachelor of Medical Science & Doctor of Medicine (Direct Entry)",
             minAtar: 92.15,
             minAtarText: "92.15 (Metro competitive is 99.40+, Rural is 91.25+)",
+            opens: "3 August 2026",
+            opensText: "Confirmed 2026-07-27 on official VTAC key-dates page: \"Timely Applications — Opens: 3 August 2026 (9am).\"",
             closes: "28 September 2026",
-            closesText: "28 September 2026",
+            closesText: "28 September 2026, 5pm — re-confirmed 2026-07-27 on official VTAC key-dates page. Timely applications only; this course does not accept late/very-late VTAC rounds.",
             ucat: "Required",
             interview: "Required",
             interviewText: "Multiple Mini Interview (MMI). Interview selection runs in two structurally different rounds: the December round (VIC + rural applicants) is selected on UCAT alone; the January round (everyone else, including interstate/DRL applicants) is selected on UCAT + ATAR equally weighted. Final offers weight ATAR, UCAT, and MMI equally.",
@@ -1870,8 +1892,10 @@
             program: "Bachelor of Medical Science / Doctor of Medicine (Provisional) (inc. UQ-Ochsner US Pathway)",
             minAtar: 95.00,
             minAtarText: "95.00 (Provisional Pathway; transitioning to a unified model by 2027)",
-            closes: "TBC",
-            closesText: "TBC (QTAC deadlines apply)",
+            opens: "4 August 2026",
+            opensText: "General QTAC portal open date (not UQ-specific) — estimated.",
+            closes: "30 September 2026",
+            closesText: "30 September 2026 — confirmed 2026-07-27 via QTAC's key-dates page (was 'TBC'). Note: the individual QTAC course-listing page for this program still shows a stale 2025 closing date — the key-dates page is the more current source.",
             ucat: "Required",
             ucatText: "Required. Reported weighting: adjusted ATAR ~25% + UCAT ~25%, remaining ~50% not clearly published. Ranking uses the aggregate cognitive UCAT score, with SJT then Verbal Reasoning used only as tiebreakers.",
             interview: "Required",
@@ -1905,8 +1929,10 @@
             program: "Bachelor of Medical Studies / Doctor of Medicine",
             minAtar: 90.00,
             minAtarText: "90.00 (Competitive ATAR is 99.50+)",
+            opens: "3 August 2026",
+            opensText: "General SATAC portal open date (not Adelaide-specific) — estimated.",
             closes: "30 September 2026",
-            closesText: "30 September 2026",
+            closesText: "30 September 2026 — re-confirmed 2026-07-27 on SATAC's own key-dates page: \"Final closing date for Medical Studies/Doctor of Medicine ... Late applications not accepted.\"",
             ucat: "Required",
             ucatText: "Required, cognitive subtests only (VR/DM/QR weighted equally). SJT is used only as a tiebreaker for the lowest rank. Officially published final-offer weighting: 40% Academic + 20% UCAT + 40% Interview.",
             interview: "Required",
@@ -1941,8 +1967,10 @@
             program: "Bachelor of Biomedicine / Doctor of Medicine (Direct Pathway)",
             minAtar: 98.00,
             minAtarText: "98.00 (Competitive ATAR ~99.40+). Note: sources disagree on whether rural applicants get a lower ATAR threshold (96.00) or the same 98.00 as Broadway/HAA pathways — worth confirming directly with UWA.",
-            closes: "TBC",
-            closesText: "TBC (Usually late September via TISC)",
+            opens: "2 June 2026",
+            opensText: "Confirmed 2026-07-27 on TISC's official calendar (general TISC open date).",
+            closes: "30 September 2026",
+            closesText: "30 September 2026, 11:59pm — confirmed 2026-07-27 on TISC's official calendar (was 'TBC'). Also called the \"Assured Pathway\" now (renamed from \"Direct Pathway\" per UWA's own page).",
             ucat: "Required",
             ucatText: "Required. Reported weighting: ATAR 30% / UCAT 20% / Interview 50% (from third-party admissions guides, not independently confirmed on UWA's own page).",
             interview: "Required",
@@ -1973,8 +2001,10 @@
             program: "Bachelor of Medicine / Bachelor of Surgery (MBBS)",
             minAtar: 95.00,
             minAtarText: "95.00 (Competitive is typically 97.00+ for local WA)",
+            opens: "2 June 2026",
+            opensText: "Confirmed 2026-07-27 on TISC's official calendar; Curtin's own page defers to the same TISC date rather than stating an independent one.",
             closes: "30 September 2026",
-            closesText: "30 September 2026 (TISC)",
+            closesText: "30 September 2026, 11:59pm — re-confirmed 2026-07-27 on TISC's official calendar (\"Bachelor of Medicine, Bachelor of Surgery at Curtin ... you can't apply for these courses or add new preferences ... after today\").",
             ucat: "Required",
             interview: "Required",
             interviewText: "Multiple Mini Interview (MMI)",
@@ -2004,8 +2034,10 @@
             program: "Bachelor of Medical Science (Provisional to MD)",
             minAtar: 99.80,
             minAtarText: "99.80 (Selection rank, actual competitive around 99.85 - 99.90)",
+            opens: "4 August 2026",
+            opensText: "General QTAC portal open date (not Griffith-specific) — estimated.",
             closes: "30 December 2026",
-            closesText: "30 December 2026 (QTAC)",
+            closesText: "30 December 2026 — re-confirmed 2026-07-27 on Griffith's own page: \"All applications must be submitted via QTAC by 30 December 2026 (AEST)\". New applications lodged after 7 Dec 2026 may not be assessed in time for the January offer round.",
             ucat: "Optional",
             ucatText: "Optional (Used only for tie-breaking within same ATAR band)",
             interview: "Not Required",
@@ -2036,8 +2068,10 @@
             program: "Bachelor of Medical Studies / Doctor of Medicine",
             minAtar: 95.00,
             minAtarText: "95.00 (Threshold to sit psychometric test, competitive is 96.45+)",
-            closes: "TBC",
-            closesText: "TBC (Usually opens Jan, closes early Feb for mid-year entry)",
+            opens: "TBC",
+            opensText: "Not found — Bond doesn't publish an open date the same way QTAC does for its own courses.",
+            closes: "19 January 2027",
+            closesText: "19 January 2027, 11:45pm QLD time — corrected 2026-07-27 (was stale 'early Feb'). For the May 2027 intake; applications still routed through QTAC despite Bond being a private university. O-Week 11 May 2027, classes start 17 May 2027.",
             ucat: "Not Required",
             interview: "Required",
             interviewText: "Psychometric Testing followed by MMI Interview",
@@ -2067,8 +2101,10 @@
             program: "Bachelor of Medicine, Bachelor of Surgery (MBBS)",
             minAtar: 91.65,
             minAtarText: "91.65 (High emphasis on written application & rural focus)",
-            closes: "TBC",
-            closesText: "TBC (Late September via QTAC)",
+            opens: "4 August 2026",
+            opensText: "Confirmed 2026-07-27 on JCU's own page: \"Applications ... for the 2027 intake for Medicine will open on 4 August 2026.\"",
+            closes: "30 September 2026",
+            closesText: "30 September 2026, 11:59pm AEST — confirmed 2026-07-27 (was 'TBC'). Requires dual submission: both the QTAC application AND a separate JCU Application Portal form, same due date. Rural Access Scheme sub-track closes a day earlier (29 Sep 2026).",
             ucat: "Not Required",
             interview: "Required",
             interviewText: "Semi-structured Panel Interview",
@@ -2098,8 +2134,10 @@
             program: "Bachelor of Clinical Sciences / Doctor of Medicine",
             minAtar: 95.00,
             minAtarText: "95.00 minimum (reported competitive cutoffs vary slightly by source: ~99.90–99.95 metro / ~99.65–99.75 rural — treat as indicative, not an official published number)",
-            closes: "TBC",
-            closesText: "TBC (SATAC deadlines apply)",
+            opens: "3 August 2026",
+            opensText: "General SATAC portal open date (not Flinders-specific) — estimated.",
+            closes: "1 December 2026",
+            closesText: "1 December 2026 — confirmed 2026-07-27 on SATAC's own key-dates page (was 'TBC'). Notably later than most other SATAC medicine programs — worth a sanity re-check next cycle.",
             ucat: "Required",
             ucatText: "Required. Ranking formula: 90% Year-12 subject results + 10% UCAT-derived score. Sub-quota (disadvantage) applicants need ATAR ≥90 after adjustment.",
             interview: "Required",
@@ -2120,7 +2158,7 @@
               "Apply through SATAC",
               "Attend the panel interview if shortlisted"
             ],
-            officialUrl: "https://www.flinders.edu.au/study/courses/undergraduate-clinical-sciences-doctor-medicine"
+            officialUrl: "https://www.flinders.edu.au/study/courses/bachelor-clinical-sciences-doctor-medicine"
           },
           {
             id: "anu",
@@ -2130,8 +2168,10 @@
             program: "Bachelor of Health Science (Pathway to MD)",
             minAtar: 90.00,
             minAtarText: "90.00 (Competitive ATAR is typically 98.00+)",
-            closes: "8 May 2026 (direct) / 30 November 2026 (UAC)",
-            closesText: "8 May 2026 (Direct Application) / 30 November 2026 (UAC)",
+            opens: "TBC",
+            opensText: "General UAC portal opens ~April; the direct-ANU route's own open date was not re-confirmed this session (only prior-year 2025 pattern found).",
+            closes: "30 November 2026 (UAC) / 8 May 2026 (direct, closed)",
+            closesText: "30 November 2026 (UAC route) — the remaining open option. The direct-application route (school leavers, due ~8 May 2026) has already closed for this cycle as of this check (2026-07-25). A separate, further internal Pathway-to-Medicine application within the Bachelor of Health Science (capped at ~30 domestic places) reportedly closes ~30 July each year — that specific date was not confirmed against a primary ANU source this session; treat it as indicative only. Re-checked 2026-07-27: still not independently re-confirmed with a fresh quote — carried forward from the 2026-07-25 check.",
             ucat: "Required",
             interview: "Required",
             interviewText: "Multi-station Interview (MMI) for MD transition",
@@ -2141,9 +2181,9 @@
             schemes: ["ANU Direct Application Adjustment Factors", "Indigenous Pathway"],
             weighting: null,
             ucatCutoffEstimate: null,
-            gateType: "unresearched",
-            gateNote: null,
-            confidence: "unverified",
+            gateType: "mixed",
+            gateNote: "Confirmed live (2026-07-25): domestic places are capped with a 30% rural-background priority allocation, plus reserved Indigenous (5 places in 2026) and international (10 places in 2026) places — a combination of competitive ATAR/UCAT entry and rural-background factors. Exact current-cycle deadlines for the internal Pathway-to-Medicine step were not independently confirmed.",
+            confidence: "estimated",
             schemeMeta: {},
             prereqs: ["Chemistry (recommended)", "English"],
             howToApply: [
@@ -2151,7 +2191,7 @@
               "Achieve high GPA in Bachelor of Health Science and sit UCAT",
               "Participate in the MMI to transition to the MD"
             ],
-            officialUrl: "https://programsandcourses.anu.edu.au/program/hhlsc"
+            officialUrl: "https://programsandcourses.anu.edu.au/program/bhlth"
           },
           {
             id: "notre-dame",
@@ -2161,8 +2201,10 @@
             program: "Bachelor of Biomedical Science (Assured Pathway to MD)",
             minAtar: 92.00,
             minAtarText: "92.00 minimum (Competitive ATAR ~98.5+). Note: this is an \"Assured Pathway\" with guaranteed MD progression on completion of the undergraduate degree — not literal direct-entry MD. Notre Dame separately runs a Graduate Entry MD (GAMSAT+GPA+CASPer, no UCAT) — don't confuse the two when researching on their site.",
+            opens: "8 April 2026 (Sydney/UAC) / 2 June 2026 (Fremantle/TISC)",
+            opensText: "General UAC/TISC portal open dates — not Assured-Pathway-specific, estimated.",
             closes: "TBC",
-            closesText: "TBC (Usually late September via TISC/UAC or Direct)",
+            closesText: "TBC (Usually late September via TISC/UAC or Direct) — flagged 2026-07-27: this session's research confirmed Notre Dame's separate Graduate Entry MD runs entirely through GEMSAS (~1-29 May 2026 window, third-party sourced, not yet cross-checked against gemsas.edu.au directly), but did NOT find an Assured-Pathway-specific close date distinct from the general late-September UAC/TISC pattern already noted here. Don't confuse the two pathways — see minAtarText.",
             ucat: "Required",
             ucatText: "Required for the Assured Pathway (school-leaver entry). Final-offer weighting is officially listed as \"to be advised\" — not published.",
             interview: "Required",
@@ -2197,8 +2239,10 @@
             program: "Bachelor of Medicine / Bachelor of Surgery (MBBS)",
             minAtar: 95.00,
             minAtarText: "95.00 (including rural adjustment). The real gate for non-Tasmanians isn't the ATAR number — it's residency: at least 75% of domestic places are reserved for Tasmanian residents specifically (TCE/IB from a Tasmanian school within 5 years), and 50% of domestic places are reserved for rural applicants.",
-            closes: "TBC",
-            closesText: "TBC (Late September via UTAS direct portal)",
+            opens: "1 August 2026",
+            opensText: "Confirmed 2026-07-27 on UTAS's own application-dates page.",
+            closes: "30 September 2026",
+            closesText: "30 September 2026, 11:59pm AEST — confirmed 2026-07-27 (was 'TBC'). Note: the officialUrl course code (M3N) now 404s — UTAS has restructured this program to course code H7X (\"Bachelor of Medical Science and Doctor of Medicine\"); dates are confirmed correct for the new code but the URL below needs updating in a follow-up sweeper pass.",
             ucat: "Required",
             ucatText: "Required, but used only as a tiebreaker when ATAR scores are equal — not blended into rank as an independently weighted factor.",
             interview: "Not Required",
@@ -2229,8 +2273,10 @@
             program: "Bachelor of Medical Science (Provisional to Griffith MD)",
             minAtar: 99.80,
             minAtarText: "99.80 (Unadjusted ATAR, adjustment factors do not apply)",
-            closes: "TBC",
-            closesText: "TBC (QTAC deadlines apply)",
+            opens: "4 August 2026",
+            opensText: "General QTAC portal open date (not school-specific) — estimated.",
+            closes: "30 December 2026",
+            closesText: "30 December 2026 — confirmed 2026-07-27 (was 'TBC'). Note: University of the Sunshine Coast has formally renamed to UniSC (usc.edu.au now 301-redirects to unisc.edu.au) — update the name field in a follow-up pass.",
             ucat: "Optional",
             ucatText: "Optional (Used only for tie-breaking within same ATAR band)",
             interview: "Not Required",
@@ -2261,8 +2307,10 @@
             program: "Bachelor of Biomedical Science (Medical) (Rural)",
             minAtar: 80.00,
             minAtarText: "80.00 (Exclusively for rural background students)",
+            opens: "3 August 2026",
+            opensText: "Confirmed 2026-07-27 on La Trobe's own page: \"Applications for domestic students for courses commencing in 2027 open in August 2026.\"",
             closes: "6 November 2026",
-            closesText: "6 November 2026 (VTAC)",
+            closesText: "6 November 2026, 12 noon AEDT (first Friday in November) — re-confirmed 2026-07-27 on La Trobe's own page (VTAC). Interviews primarily early December, backup early January.",
             ucat: "Required",
             interview: "Required",
             interviewText: "Multiple Mini Interview (MMI) at University of Melbourne",
@@ -2293,8 +2341,10 @@
             program: "Doctor of Medicine (Joint Program with WSU)",
             minAtar: 95.50,
             minAtarText: "95.50 (91.50 for Rural/Regional)",
+            opens: "1 June 2026",
+            opensText: "Estimated only — sourced from a third-party admissions guide; CSU's own application-dates page returned HTTP 403 and could not be independently confirmed this session.",
             closes: "25 September 2026",
-            closesText: "25 September 2026",
+            closesText: "25 September 2026 — re-confirmed 2026-07-27 via UAC's medicine key-dates page.",
             ucat: "Required",
             interview: "Required",
             interviewText: "Multiple Mini Interview (MMI) held at Orange campus",
@@ -2324,8 +2374,10 @@
             program: "Bachelor of Clinical Sciences (Pathway to Flinders MD)",
             minAtar: 90.00,
             minAtarText: "90.00 (High priority for NT residents and Indigenous students)",
-            closes: "TBC October 2026",
-            closesText: "TBC October 2026 (SATAC)",
+            opens: "3 August 2026",
+            opensText: "General SATAC portal open date (not CDU-specific) — estimated.",
+            closes: "9 October 2026",
+            closesText: "9 October 2026 — resolved 2026-07-27 (was 'TBC October 2026'). Two distinct SATAC course codes exist for CDU: \"Bachelor of Clinical Science Medicine/Doctor of Medicine\" (SMED01, closes 9 Oct 2026 — used here, closer match to the prior 'October' hint) vs. plain \"Bachelor of Clinical Sciences\" (WCSCI1, closes 1 Dec 2026, no Flinders-MD pathway). The officialUrl below (wclsc1) 404s and needs updating to the correct SMED01 course page in a follow-up sweeper pass.",
             ucat: "Required",
             interview: "Required",
             interviewText: "Semi-structured Panel Interview (Flinders MD transition)",
@@ -2356,8 +2408,10 @@
             program: "Bachelor of Medical Science (Pathway to UQ MD)",
             minAtar: 95.00,
             minAtarText: "95.00 (Exclusively for regional/rural pathways)",
-            closes: "TBC",
-            closesText: "TBC (QTAC)",
+            opens: "4 August 2026",
+            opensText: "Confirmed 2026-07-27 on CQU's own page: \"QTAC applications open Tuesday, 4 August 2026 and close Wednesday, 30 September 2026.\"",
+            closes: "30 September 2026",
+            closesText: "30 September 2026 — confirmed 2026-07-27 on CQU's own page (was 'TBC'). Separate MMI stage 24-26 Nov 2026 for shortlisted (UCAT-ranked) applicants.",
             ucat: "Required",
             interview: "Required",
             interviewText: "Multiple Mini Interview (MMI) held by UQ",
@@ -2387,8 +2441,10 @@
             program: "Bachelor of Medicine & Surgery (MBChB) (First Year Entry)",
             minAtar: 85.00, // Normalized for slider, actual is rank score 250-280
             minAtarText: "NCEA Rank Score of 250-280 (plus specific first-year University GPA)",
+            opens: "TBC",
+            opensText: "Not found this session — no MBChB-specific open date is published on Auckland's official pages; the general 'Apply to Study' portal is open year-round.",
             closes: "1 July 2026",
-            closesText: "1 July 2026",
+            closesText: "1 July 2026 — confirmed live (2026-07-25) as the correct annual deadline for the First-Year pathway. Already closed for the current cycle as of this check; recurs 1 July every year, tied to whoever is completing the qualifying first-year courses that year (not a fixed lead time before MD start). Re-confirmed 2026-07-27: this single deadline applies to both First-Year and Graduate Entry applicants — Auckland's official closing-date tables list only one shared MBChB row, no separate Graduate Entry deadline exists.",
             ucat: "Required",
             interview: "Required",
             interviewText: "Multiple Mini Interview (MMI)",
@@ -2398,9 +2454,9 @@
             schemes: ["Regional Rural Admission Scheme (RRAS)", "Maori and Pacific Admission Scheme (MAPAS)"],
             weighting: null,
             ucatCutoffEstimate: null,
-            gateType: "unresearched",
-            gateNote: "NZ schools run their own regional/Maori-Pacific quota systems, meaningfully different from Australian state-based rules — not independently checked this cycle.",
-            confidence: "unverified",
+            gateType: "score-driven",
+            gateNote: "Confirmed live (2026-07-25): two tracks — First-Year (min GPA 6.0 across 4 core first-year BHSc/BSc Biomedical Science courses, sit UCAT ANZ, then MMI) or Graduate Entry (completed degree, min GPA 6.0, within 5 years). School leavers cannot apply directly — must enter via First-Year. RRAS/MAPAS are supplementary regional/Maori-Pacific schemes alongside this, not a hard residency gate on the main pathway.",
+            confidence: "verified",
             schemeMeta: {},
             prereqs: ["NCEA Level 3 English & Science subjects"],
             howToApply: [
@@ -2419,8 +2475,10 @@
             program: "Bachelor of Medicine & Surgery (MBChB) (First Year Entry)",
             minAtar: 80.00, // Normalized for slider, actual is HSFY entry
             minAtarText: "N/A (Entry based purely on Health Sciences First Year - HSFY - grades)",
-            closes: "10 December 2026",
-            closesText: "10 December 2026",
+            opens: "1 July 2026",
+            opensText: "Health Sciences undergraduate professional programme (Medicine 2nd-year selection) applications open online — confirmed 2026-07-27 on Otago's own dates page.",
+            closes: "13 August 2026",
+            closesText: "13 August 2026 — corrected 2026-07-27 (was '10 December 2026'). This is the binding cutoff for Medicine 2nd-year selection (from HSFY). The previously recorded 10 Dec 2026 is real but is a DIFFERENT, earlier stage: the Health Sciences First Year (HSFY) enrolment deadline (opens 1 May 2026) — completing HSFY doesn't guarantee a Medicine place, and enrolling by 10 Dec doesn't help if you miss the 13 Aug Medicine-selection deadline. Source: otago.ac.nz/future-students/dates.",
             ucat: "Required",
             interview: "Not Required",
             interviewText: "None (Selected based on HSFY grades & UCAT threshold)",
@@ -2439,9 +2497,9 @@
               "Sit UCAT ANZ in Year 13",
               "Enroll in Health Sciences First Year (HSFY) at Otago",
               "Achieve 70%+ in all 7 core HSFY papers with no paper below B-",
-              "Apply directly to Otago Medicine by 15 September (for the HSFY category)"
+              "Apply directly to Otago Medicine by 13 August (for the second-year Medicine-selection stage, not the earlier 10 Dec HSFY enrolment deadline)"
             ],
-            officialUrl: "https://www.otago.ac.nz/courses/qualifications/mbchb.html"
+            officialUrl: "https://www.otago.ac.nz/courses/qualifications/bachelor-of-medicine-and-bachelor-of-surgery"
           }
         ];
 
@@ -2496,6 +2554,8 @@
         const drawerDuration = document.getElementById('drawer-duration');
         const drawerFee = document.getElementById('drawer-fee');
         const drawerPlaces = document.getElementById('drawer-places');
+        const drawerOpens = document.getElementById('drawer-opens');
+        const drawerCloses = document.getElementById('drawer-closes');
         const drawerUcatDesc = document.getElementById('drawer-ucat-desc');
         const drawerInterviewDesc = document.getElementById('drawer-interview-desc');
         const drawerGateDesc = document.getElementById('drawer-gate-desc');
@@ -2687,6 +2747,13 @@
                 const d = new Date(evt.date);
                 if (!isNaN(d.getTime())) return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
             }
+            if (evt.dateLabel) {
+                const ts = parseAppDate(evt.dateLabel);
+                if (isFinite(ts)) {
+                    const d = new Date(ts);
+                    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+                }
+            }
             return 'unconfirmed';
         }
 
@@ -2700,6 +2767,28 @@
             const d = new Date(dateStr);
             if (isNaN(d.getTime())) return dateStr;
             return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        // Parses free-text application dates (e.g. "30 September 2026", "TBC",
+        // "13 December 2026", "30 November 2026 (UAC) / 8 May 2026 (direct, closed)")
+        // into a sortable timestamp. Unparseable/TBC strings sort last (Infinity).
+        function parseAppDate(str) {
+            if (!str) return Infinity;
+            const months = { january: 0, february: 1, march: 2, april: 3, may: 4, june: 5, july: 6, august: 7, september: 8, october: 9, november: 10, december: 11 };
+            const match = str.match(/(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})/i);
+            if (!match) return Infinity;
+            const day = parseInt(match[1], 10);
+            const month = months[match[2].toLowerCase()];
+            const year = parseInt(match[3], 10);
+            return new Date(year, month, day).getTime();
+        }
+
+        // Compact display form for a free-text application date — "28 Sep 2026"
+        // when a date is found, otherwise the original string unchanged (e.g. "TBC").
+        function formatAppDate(str) {
+            const ts = parseAppDate(str);
+            if (!isFinite(ts)) return str || 'TBC';
+            return new Date(ts).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
         }
 
         function renderTimeline() {
@@ -2754,7 +2843,7 @@
                         <div class="card-top">
                             <span class="${regionTagClass}">${uni.state}</span>
                             <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
-                                <i class="fa-regular fa-calendar-days"></i> ${uni.closes.split(' ')[0] + ' ' + (uni.closes.split(' ')[1] || '')}
+                                <i class="fa-regular fa-calendar-days"></i> ${formatAppDate(uni.closes)}
                             </span>
                         </div>
                         <h3 class="card-title">${uni.name}</h3>
@@ -2850,6 +2939,10 @@
                 filteredUnis.sort((a, b) => b.minAtar - a.minAtar);
             } else if (currentSort === 'atar-asc') {
                 filteredUnis.sort((a, b) => a.minAtar - b.minAtar);
+            } else if (currentSort === 'opens-asc') {
+                filteredUnis.sort((a, b) => parseAppDate(a.opens) - parseAppDate(b.opens));
+            } else if (currentSort === 'closes-asc') {
+                filteredUnis.sort((a, b) => parseAppDate(a.closes) - parseAppDate(b.closes));
             }
 
             renderUnis();
@@ -2866,7 +2959,11 @@
             drawerDuration.textContent = uni.duration;
             drawerFee.textContent = uni.cost;
             drawerPlaces.textContent = uni.places;
-            
+            drawerOpens.textContent = formatAppDate(uni.opens);
+            drawerOpens.title = uni.opensText || '';
+            drawerCloses.textContent = formatAppDate(uni.closes);
+            drawerCloses.title = uni.closesText || '';
+
             drawerUcatDesc.innerHTML = `<strong>${uni.ucat}:</strong> ${uni.ucatText || (uni.ucat === 'Required' ? 'Must sit the UCAT ANZ in 2026. Results contribute to selection.' : 'This program does not require the UCAT.')}`;
             drawerInterviewDesc.innerHTML = `<strong>${uni.interview === 'Required' ? 'Required' : 'Not Required'}:</strong> ${uni.interviewText}`;
             drawerGateDesc.innerHTML = `${gateTypeLabel(uni.gateType)}${uni.gateNote ? ' — ' + uni.gateNote : ''}`;
