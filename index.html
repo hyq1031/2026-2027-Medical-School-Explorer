@@ -395,11 +395,16 @@
             text-decoration: underline;
         }
 
+        .apply-table-wrap {
+            overflow-x: auto;
+            margin-top: 0.3rem;
+        }
+
         .apply-code-table {
             width: 100%;
+            min-width: 560px;
             border-collapse: collapse;
             font-size: 0.78rem;
-            margin-top: 0.3rem;
         }
 
         .apply-code-table th {
@@ -438,6 +443,30 @@
             color: var(--text-primary);
             white-space: nowrap;
         }
+
+        .apply-code-table .reality-cell {
+            font-size: 0.74rem;
+            line-height: 1.5;
+            max-width: 34ch;
+        }
+
+        .tier-tag {
+            font-family: var(--font-body);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .tier-reach { background: var(--danger-glow); color: var(--danger); }
+        .tier-target { background: var(--warning-glow); color: var(--warning); }
+        .tier-safety { background: var(--success-glow); color: var(--success); }
+        .tier-indirect { background: var(--secondary-glow); color: var(--secondary); }
+        .tier-unclear { background: hsla(220, 10%, 55%, 0.1); color: var(--text-muted); }
 
         /* Dashboard Main Layout */
         .dashboard {
@@ -1689,6 +1718,7 @@
         <section class="apply-section" id="apply-section">
             <h2 class="concepts-heading"><i class="fa-solid fa-file-pen"></i> How to Apply (Current Year 12, 2027 Entry)</h2>
             <p class="apply-intro">Medicine applications route through <strong>state-based admissions centres</strong>, not the university directly — except WA-style direct portals and NZ. Every AU/NZ school on this site falls into one of the groups below. Preference caps, codes and lock dates are for <strong>this cycle (applying in 2026 for 2027 entry)</strong> and are re-checked live each sweeper pass — always confirm the current figure inside the portal itself before you submit, since caps and codes both drift year to year.</p>
+            <p class="apply-intro" style="margin-top: -0.6rem;"><strong>Tier tags</strong> compare each school's <em>published minimum</em> against its <em>historical actual-offer reality</em> (live-checked this session, separate from this app's own cached ATAR field): <span class="tier-tag tier-reach">Reach</span> published floor sits well below what's actually competitive · <span class="tier-tag tier-target">Target</span> ATAR is a real threshold and the offer genuinely rides on UCAT/interview from there · <span class="tier-tag tier-indirect">Indirect</span> a multi-year or multi-stage pathway, not a direct same-cycle seat · <span class="tier-tag tier-unclear">Unclear</span> no independently verified historical figure exists yet — don't treat the published number as the real bar. These are today's snapshot, not a guarantee — re-check before relying on them.</p>
 
             <div class="apply-portal-list">
                 <details class="apply-portal">
@@ -1702,15 +1732,14 @@
                         <div class="apply-step"><span class="apply-step-num">3</span><div class="apply-step-body">Register for and sit <strong>UCAT ANZ</strong> (July sitting) — one score feeds every NSW preference, but each university ranks it independently.</div></div>
                         <div class="apply-step"><span class="apply-step-num">4</span><div class="apply-step-body">Submit by the standard close (30 Sep 2026 this cycle). Attend each school's own interview if shortlisted — invites don't depend on your preference order.</div></div>
                         <div class="apply-step"><span class="apply-step-num">5</span><div class="apply-step-body">ATAR releases 16 Dec 2026 — you can still reorder/add/drop preferences through the Dec/Jan change-of-preference rounds, final close 5 Feb 2027.</div></div>
-                        <table class="apply-code-table">
-                            <tr><th>School</th><th>UAC code</th><th>Course page</th></tr>
-                            <tr><td>UNSW</td><td class="code-mono">428000</td><td><a href="https://www.unsw.edu.au/medicine-health/study-with-us/undergraduate/domestic-applicants" target="_blank" rel="noopener">unsw.edu.au</a></td></tr>
-                            <tr><td>Sydney (BA/MD)</td><td class="code-mono">513715</td><td><a href="https://www.sydney.edu.au/courses/courses/uc/bachelor-of-science-and-doctor-of-medicine.html" target="_blank" rel="noopener">sydney.edu.au</a></td></tr>
-                            <tr><td>Sydney (BSc/MD)</td><td class="code-mono">513720</td><td><a href="https://www.sydney.edu.au/courses/courses/uc/bachelor-of-science-and-doctor-of-medicine.html" target="_blank" rel="noopener">sydney.edu.au</a></td></tr>
-                            <tr><td>Newcastle/UNE (JMP)</td><td class="code-mono">785000</td><td><a href="https://www.newcastle.edu.au/joint-medical-program" target="_blank" rel="noopener">newcastle.edu.au</a></td></tr>
-                            <tr><td>WSU (JMP)</td><td class="code-mono">725505</td><td><a href="https://www.westernsydney.edu.au/future/study/courses/undergraduate/doctor-of-medicine" target="_blank" rel="noopener">westernsydney.edu.au</a></td></tr>
-                            <tr><td>CSU (Orange, own program from Mar 2027)</td><td class="code-mono">214478</td><td><a href="https://study.csu.edu.au/courses/medical-science/doctor-medicine" target="_blank" rel="noopener">study.csu.edu.au</a></td></tr>
-                        </table>
+                        <div class="apply-table-wrap"><table class="apply-code-table">
+                            <tr><th>School</th><th>Published min</th><th>Historical competitive reality</th><th>Tier</th></tr>
+                            <tr><td>Sydney (BA/MD 513715 · BSc/MD 513720)</td><td>99.95</td><td class="reality-cell">Consistently ~99.95, near-zero flex. No UCAT, but the ~30 domestic + 10 intl places are <strong>shared across both codes</strong> — listing both isn't 2 independent shots.</td><td><span class="tier-tag tier-reach">Reach</span></td></tr>
+                            <tr><td>UNSW (428000)</td><td>96.00</td><td class="reality-cell">Published floor is misleading — UNSW's own page admits real bar is <strong>~99.60+</strong>; UCAT needs ~94th pct+ just to reach interview.</td><td><span class="tier-tag tier-reach">Reach</span></td></tr>
+                            <tr><td>WSU/JMP (725505)</td><td>95.50 / 93.50 GWS / 91.50 rural</td><td class="reality-cell">ATAR is a threshold only. UCAT interview-invite cutoff reported ~3090 recent cycles. Final offer <strong>75% interview + 25% UCAT</strong>.</td><td><span class="tier-tag tier-target">Target</span></td></tr>
+                            <tr><td>Newcastle/UNE JMP (785000)</td><td>94.30 / 85.00 rural</td><td class="reality-cell">2025 lowest selection rank ≈94.30 standard / ≈90.00 rural. ATAR threshold only — PQA + MSA interview decide the offer.</td><td><span class="tier-tag tier-target">Target</span></td></tr>
+                            <tr><td>CSU (214478)</td><td>95.50 / 91.50 rural</td><td class="reality-cell">Brand-new independent program, first cohort Mar 2027 — <strong>no track record under its own selection rules yet</strong>. Old WSU-joint-program figures don't transfer.</td><td><span class="tier-tag tier-unclear">Unclear</span></td></tr>
+                        </table></div>
                     </div>
                 </details>
 
@@ -1725,12 +1754,12 @@
                         <div class="apply-step"><span class="apply-step-num">3</span><div class="apply-step-body">Sit UCAT ANZ. Timely close is 5pm Mon 28 Sep 2026 this cycle. <strong>Monash-specific:</strong> if you don't have a Monash Medicine preference on your list at the close of timely applications, you cannot add one later.</div></div>
                         <div class="apply-step"><span class="apply-step-num">4</span><div class="apply-step-body"><strong>La Trobe</strong> is a Bachelor of Biomedical Science pathway feeding Melbourne's graduate-entry MD, not a standalone degree — needs a VTAC application <em>plus</em> a separate rurality form (and School Endorsement form if you're a current Year 12).</div></div>
                         <div class="apply-step"><span class="apply-step-num">5</span><div class="apply-step-body">Check <a href="https://vtac.edu.au/dates" target="_blank" rel="noopener">vtac.edu.au/dates</a> for the exact change-of-preference lock and offer-round dates — not independently verified here beyond the timely-close date above.</div></div>
-                        <table class="apply-code-table">
-                            <tr><th>School</th><th>Course page</th></tr>
-                            <tr><td>Melbourne</td><td><a href="https://study.unimelb.edu.au/find/courses/graduate/doctor-of-medicine/" target="_blank" rel="noopener">study.unimelb.edu.au</a></td></tr>
-                            <tr><td>Monash</td><td><a href="https://www.monash.edu/medicine/som/direct-entry" target="_blank" rel="noopener">monash.edu</a></td></tr>
-                            <tr><td>La Trobe (pathway)</td><td><a href="https://www.latrobe.edu.au/courses/bachelor-of-biomedical-science-medical" target="_blank" rel="noopener">latrobe.edu.au</a></td></tr>
-                        </table>
+                        <div class="apply-table-wrap"><table class="apply-code-table">
+                            <tr><th>School</th><th>Published min</th><th>Historical competitive reality</th><th>Tier</th></tr>
+                            <tr><td><a href="https://study.unimelb.edu.au/find/courses/graduate/doctor-of-medicine/" target="_blank" rel="noopener">Melbourne</a></td><td>99.90 (feeder undergrad)</td><td class="reality-cell">MD itself is <strong>graduate-entry</strong> — ATAR mostly gates the undergrad feeder degree, not the medicine seat. Competitive GPA at MD stage ≥6.0 (many 6.5+) + GAMSAT.</td><td><span class="tier-tag tier-indirect">Indirect</span></td></tr>
+                            <tr><td><a href="https://www.monash.edu/medicine/som/direct-entry" target="_blank" rel="noopener">Monash</a></td><td>92.15</td><td class="reality-cell">Actual cutoff ~99.4 metro / 91.25 rural; competitive range 99.7+ metro / 96+ rural. UCAT interview floor ~3080 (94th pct metro, 66th pct rural).</td><td><span class="tier-tag tier-reach">Reach</span> (rural: <span class="tier-tag tier-target">Target</span>)</td></tr>
+                            <tr><td><a href="https://www.latrobe.edu.au/courses/bachelor-of-biomedical-science-medical" target="_blank" rel="noopener">La Trobe (pathway)</a></td><td>80.00</td><td class="reality-cell">Not a medicine seat itself — feeds Melbourne's Rural Pathway (32 places 2027, 15 CSPs reserved for La Trobe grads). Needs WAM ≥70 during the degree, no GAMSAT, rural-specific MMI.</td><td><span class="tier-tag tier-indirect">Multi-year pathway</span></td></tr>
+                        </table></div>
                     </div>
                 </details>
 
@@ -1745,15 +1774,15 @@
                         <div class="apply-step"><span class="apply-step-num">3</span><div class="apply-step-body">Sit UCAT ANZ. UQ's standard close is 30 Sep 2026 this cycle; MMI invitations mid-late Oct, interviews mid-late Nov.</div></div>
                         <div class="apply-step"><span class="apply-step-num">4</span><div class="apply-step-body"><strong>CQU</strong> additionally wants a resume, personal statement and Aboriginal/Torres Strait Islander status declaration uploaded alongside the QTAC form. <strong>Bond</strong> is private and also runs a separate QTAC window (5–19 Jan 2027) for late/gap-year applicants.</div></div>
                         <div class="apply-step"><span class="apply-step-num">5</span><div class="apply-step-body">Check <a href="https://www.qtac.edu.au/key-info/" target="_blank" rel="noopener">qtac.edu.au/key-info</a> for exact lock/offer round dates per school — only UQ's close date above was independently verified this session.</div></div>
-                        <table class="apply-code-table">
-                            <tr><th>School</th><th>Course page</th></tr>
-                            <tr><td>UQ</td><td><a href="https://study.uq.edu.au/study-options/programs/doctor-medicine-provisional-entry-5740" target="_blank" rel="noopener">study.uq.edu.au</a></td></tr>
-                            <tr><td>Griffith</td><td><a href="https://www.griffith.edu.au/study/degrees/bachelor-of-medical-science-1282" target="_blank" rel="noopener">griffith.edu.au</a></td></tr>
-                            <tr><td>JCU</td><td><a href="https://www.jcu.edu.au/courses/bachelor-of-medicine-bachelor-of-surgery" target="_blank" rel="noopener">jcu.edu.au</a></td></tr>
-                            <tr><td>USC</td><td><a href="https://www.usc.edu.au/study/courses-and-programs/bachelor-degrees-undergraduate-programs/bachelor-of-medical-science" target="_blank" rel="noopener">usc.edu.au</a></td></tr>
-                            <tr><td>CQU (regional pathway)</td><td><a href="https://www.cqu.edu.au/courses/bachelor-of-medical-science-regional-medical-pathway" target="_blank" rel="noopener">cqu.edu.au</a></td></tr>
-                            <tr><td>Bond (private)</td><td><a href="https://bond.edu.au/applications-medical-program" target="_blank" rel="noopener">bond.edu.au</a></td></tr>
-                        </table>
+                        <div class="apply-table-wrap"><table class="apply-code-table">
+                            <tr><th>School</th><th>Published min</th><th>Historical competitive reality</th><th>Tier</th></tr>
+                            <tr><td><a href="https://study.uq.edu.au/study-options/programs/doctor-medicine-provisional-entry-5740" target="_blank" rel="noopener">UQ</a></td><td>95.00</td><td class="reality-cell">Successful applicants almost always ATAR 99.00+. 2026 UCAT interview floor: 2290 standard / 1960 rural sub-quota.</td><td><span class="tier-tag tier-reach">Reach</span></td></tr>
+                            <tr><td><a href="https://www.griffith.edu.au/study/degrees/bachelor-of-medical-science-1282" target="_blank" rel="noopener">Griffith</a></td><td>99.80</td><td class="reality-cell">2023–2025 minimum offer ATAR ranged 99.80–99.90 (Gold Coast); Nathan campus min 99.95. UCAT optional, used only as a tiebreaker.</td><td><span class="tier-tag tier-reach">Reach</span></td></tr>
+                            <tr><td><a href="https://www.jcu.edu.au/courses/bachelor-of-medicine-bachelor-of-surgery" target="_blank" rel="noopener">JCU</a></td><td>91.65</td><td class="reality-cell">Sem 1 2026 Cairns: highest 99.95, median 97.65, <strong>lowest accepted 88.00</strong>. Rural admits reported 85–93. No UCAT used.</td><td><span class="tier-tag tier-reach">Reach</span> (rural: <span class="tier-tag tier-target">Target</span>)</td></tr>
+                            <tr><td><a href="https://www.usc.edu.au/study/courses-and-programs/bachelor-degrees-undergraduate-programs/bachelor-of-medical-science" target="_blank" rel="noopener">USC/UniSC</a></td><td>99.80</td><td class="reality-cell">Sem 1 2026: lowest ATAR/rank considered 99.85 as at the 15 Jan offer round. Tiny ~20-place cohort, UCAT is tiebreaker only.</td><td><span class="tier-tag tier-reach">Reach</span></td></tr>
+                            <tr><td><a href="https://www.cqu.edu.au/courses/bachelor-of-medical-science-regional-medical-pathway" target="_blank" rel="noopener">CQU (regional pathway)</a></td><td>95.00</td><td class="reality-cell">Admitted students report ATAR ~98.7 in practice despite the lower published floor. UCAT weighted 100% for interview shortlist, ~25% at final offer.</td><td><span class="tier-tag tier-reach">Reach</span></td></tr>
+                            <tr><td><a href="https://bond.edu.au/applications-medical-program" target="_blank" rel="noopener">Bond (private)</a></td><td>95.00</td><td class="reality-cell">2025 cutoff 96.75 undergrad; 2026 threshold 96.45. No UCAT — Bond's own MSCEIT II test gates interview. Full fee-paying, so "reach" here is partly financial, not just academic.</td><td><span class="tier-tag tier-reach">Reach</span></td></tr>
+                        </table></div>
                     </div>
                 </details>
 
@@ -1767,12 +1796,12 @@
                         <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body">List <strong>up to 6 ranked preferences</strong>. <strong>Flinders and CDU share one Doctor of Medicine application</strong> — the Bedford Park (SA) and Darwin (NT Medical Program) campuses are entered as separate preferences within that one SATAC form, not separate applications.</div></div>
                         <div class="apply-step"><span class="apply-step-num">3</span><div class="apply-step-body">Sit UCAT ANZ. CDU's confirmed close this cycle is 9 Oct 2026 (SATAC code SMED01) per this app's verified data.</div></div>
                         <div class="apply-step"><span class="apply-step-num">4</span><div class="apply-step-body">Flinders' MD interview is a 45-minute panel format, distinct from the MMI style used elsewhere.</div></div>
-                        <table class="apply-code-table">
-                            <tr><th>School</th><th>Course page</th></tr>
-                            <tr><td>Adelaide</td><td><a href="https://www.adelaide.edu.au/degree-finder/bmsdm_bmedscidm.html" target="_blank" rel="noopener">adelaide.edu.au</a></td></tr>
-                            <tr><td>Flinders (SA campus)</td><td><a href="https://www.flinders.edu.au/study/courses/bachelor-clinical-sciences-doctor-medicine" target="_blank" rel="noopener">flinders.edu.au</a></td></tr>
-                            <tr><td>Charles Darwin (NT campus, SMED01)</td><td><a href="https://www.cdu.edu.au/study/course/bachelor-clinical-science-medicinedoctor-medicine-smed01" target="_blank" rel="noopener">cdu.edu.au</a></td></tr>
-                        </table>
+                        <div class="apply-table-wrap"><table class="apply-code-table">
+                            <tr><th>School</th><th>Published min</th><th>Historical competitive reality</th><th>Tier</th></tr>
+                            <tr><td><a href="https://www.adelaide.edu.au/degree-finder/bmsdm_bmedscidm.html" target="_blank" rel="noopener">Adelaide</a></td><td>90.00</td><td class="reality-cell">Competitive entry typically <strong>99.50+</strong>. Interview is 40% of final rank; ~600 interviewed/yr, ≥50% reserved for SA school leavers.</td><td><span class="tier-tag tier-reach">Reach</span></td></tr>
+                            <tr><td><a href="https://www.flinders.edu.au/study/courses/bachelor-clinical-sciences-doctor-medicine" target="_blank" rel="noopener">Flinders (SA campus)</a></td><td>95.00</td><td class="reality-cell">Actual cutoff 99.90 metro / 99.65 rural; competitive 99.95 / 99.75. <strong>No interview</strong> — purely 90% ATAR + 10% UCAT, so it's formulaic, not variance-prone.</td><td><span class="tier-tag tier-reach">Reach</span></td></tr>
+                            <tr><td><a href="https://www.cdu.edu.au/study/course/bachelor-clinical-science-medicinedoctor-medicine-smed01" target="_blank" rel="noopener">Charles Darwin (NT campus, SMED01)</a></td><td>90.00</td><td class="reality-cell">Need ~90+ ATAR to be competitive for the Flinders NTMP pathway. CDU separately runs a brand-new, independent "Menzies Medical Program" (first intake 2026, 40 places, min ATAR 85/GPA 5.0) — <strong>confirm which program SMED01 refers to before relying on this row</strong>, the two aren't clearly disambiguated in public sources.</td><td><span class="tier-tag tier-unclear">Unclear</span></td></tr>
+                        </table></div>
                     </div>
                 </details>
 
@@ -1786,12 +1815,12 @@
                         <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body">List <strong>up to 6 ranked preferences</strong>. Current Year 12 WA school leavers can lodge early, before 30 Nov 2026 this cycle.</div></div>
                         <div class="apply-step"><span class="apply-step-num">3</span><div class="apply-step-body"><strong>Eligibility gate:</strong> for 2027 entry to UWA's Assured Pathway or Curtin Medicine you must hold Australian permanent residency <strong>by 30 Sep 2026</strong> — this is a hard cutoff, not adjustable after the fact.</div></div>
                         <div class="apply-step"><span class="apply-step-num">4</span><div class="apply-step-body">Interviews are arranged directly by UWA/Curtin, weighted by UCAT (and predicted ATAR at Curtin — UWA doesn't use predicted ATAR for its interview shortlist).</div></div>
-                        <table class="apply-code-table">
-                            <tr><th>School</th><th>Course page</th></tr>
-                            <tr><td>UWA</td><td><a href="https://www.uwa.edu.au/study/courses/doctor-of-medicine-direct-pathway" target="_blank" rel="noopener">uwa.edu.au</a></td></tr>
-                            <tr><td>Curtin</td><td><a href="https://study.curtin.edu.au/offering/course-ug-bachelor-of-medicine-bachelor-of-surgery-mbbs--ur-mdsurg/" target="_blank" rel="noopener">study.curtin.edu.au</a></td></tr>
-                            <tr><td>Notre Dame (Fremantle, WA campus)</td><td><a href="https://www.notredame.edu.au/programs/school-of-medicine" target="_blank" rel="noopener">notredame.edu.au</a></td></tr>
-                        </table>
+                        <div class="apply-table-wrap"><table class="apply-code-table">
+                            <tr><th>School</th><th>Published min</th><th>Historical competitive reality</th><th>Tier</th></tr>
+                            <tr><td><a href="https://www.uwa.edu.au/study/courses/doctor-of-medicine-direct-pathway" target="_blank" rel="noopener">UWA (Assured Pathway)</a></td><td>98.00 (app-verified) — one third-party source instead reports ~96 for recent domestic non-rural intakes; <strong>discrepancy not resolved, check UWA's own page</strong></td><td class="reality-cell">Indirect: conditional on Bachelor of Biomedicine (Specialised) with GPA ≥5.5 in first 2 years, plus a UCAT/SJT band clearing that intake's cut.</td><td><span class="tier-tag tier-indirect">Indirect</span></td></tr>
+                            <tr><td><a href="https://study.curtin.edu.au/offering/course-ug-bachelor-of-medicine-bachelor-of-surgery-mbbs--ur-mdsurg/" target="_blank" rel="noopener">Curtin</a></td><td>95.00</td><td class="reality-cell">No independently verified historical actual-offer figure found this session — only the published floor. Don't treat 95.00 as the real bar.</td><td><span class="tier-tag tier-unclear">Unclear</span></td></tr>
+                            <tr><td><a href="https://www.notredame.edu.au/programs/school-of-medicine" target="_blank" rel="noopener">Notre Dame (Fremantle, WA campus)</a></td><td>N/A — postgrad entry, no ATAR</td><td class="reality-cell">GEMSAS grad-entry: weighted GPA ≥5.2, GAMSAT avg ≥52 (min 50/section). 2023 intake averages: GAMSAT 66, GPA 6.70. Doesn't consume a TISC preference slot.</td><td><span class="tier-tag tier-indirect">Not TISC</span></td></tr>
+                        </table></div>
                     </div>
                 </details>
 
@@ -1801,8 +1830,8 @@
                         <span class="apply-portal-meta">ANU · UTAS · no shared portal</span>
                     </summary>
                     <div class="apply-portal-body">
-                        <div class="apply-step"><span class="apply-step-num">1</span><div class="apply-step-body"><strong>ANU (Bachelor of Health Science):</strong> school leavers apply direct through <a href="https://science.anu.edu.au/study/how-apply/bachelor-health-science-domestic" target="_blank" rel="noopener">ANU's own portal</a> plus a compulsory BHLTH Supplementary Form. Non-school-leavers/transfers must go via UAC instead. No UCAT — this is a pathway toward the postgrad MChD (≤30 places/yr), not a guaranteed medicine seat.</div></div>
-                        <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body"><strong>UTAS (H3X):</strong> apply direct at <a href="https://www.utas.edu.au/study/apply" target="_blank" rel="noopener">utas.edu.au/study/apply</a>. Close 30 Sep 2026 this cycle, strictly enforced — not part of the Schools Recommendation Program.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">1</span><div class="apply-step-body"><strong>ANU (Bachelor of Health Science):</strong> school leavers apply direct through <a href="https://science.anu.edu.au/study/how-apply/bachelor-health-science-domestic" target="_blank" rel="noopener">ANU's own portal</a> plus a compulsory BHLTH Supplementary Form. Non-school-leavers/transfers must go via UAC instead. No UCAT — this is a pathway toward the postgrad MChD (≤30 places/yr), not a guaranteed medicine seat. Published min 90.00; no independently verified historical actual-offer figure found this session. <span class="tier-tag tier-unclear">Unclear</span></div></div>
+                        <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body"><strong>UTAS (H3X):</strong> apply direct at <a href="https://www.utas.edu.au/study/apply" target="_blank" rel="noopener">utas.edu.au/study/apply</a>. Close 30 Sep 2026 this cycle, strictly enforced — not part of the Schools Recommendation Program. Published min 95.00 (+ up to 5-pt rural adjustment); 75% Tasmanian-residency and 50% rural quotas mean near-zero places realistically go to non-Tasmanian metro applicants, and a Band 4 SJT can be disqualifying regardless of overall score. <span class="tier-tag tier-reach">Reach</span> (compounded by residency gating)</div></div>
                     </div>
                 </details>
 
@@ -1812,8 +1841,8 @@
                         <span class="apply-portal-meta">Auckland · Otago · own portals, not a shared TAC</span>
                     </summary>
                     <div class="apply-portal-body">
-                        <div class="apply-step"><span class="apply-step-num">1</span><div class="apply-step-body"><strong>Auckland:</strong> you cannot apply into MBChB directly as a school leaver — first apply into <a href="https://www.auckland.ac.nz/en/study/study-options/find-a-study-option/bachelor-of-medicine-and-bachelor-of-surgery-mbchb.html" target="_blank" rel="noopener">BHSc or BSc(Biomed Sci)</a> via Auckland's own admission system, then apply into MBChB from inside that first year. UCAT ANZ is sat in the application year; MMI follows.</div></div>
-                        <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body"><strong>Otago:</strong> apply direct via <strong>eVision</strong> — "Apply Now" on the <a href="https://www.otago.ac.nz/courses/qualifications/bachelor-of-medicine-and-bachelor-of-surgery" target="_blank" rel="noopener">MBChB page</a> → create an eVision account → select "Health Sciences Undergraduate Professional Programmes" → "Medicine". UCAT ANZ threshold gate applies (Verbal Reasoning ≥ 20th pct, SJT ≥ 10th pct for the general category this cycle).</div></div>
+                        <div class="apply-step"><span class="apply-step-num">1</span><div class="apply-step-body"><strong>Auckland:</strong> you cannot apply into MBChB directly as a school leaver — first apply into <a href="https://www.auckland.ac.nz/en/study/study-options/find-a-study-option/bachelor-of-medicine-and-bachelor-of-surgery-mbchb.html" target="_blank" rel="noopener">BHSc or BSc(Biomed Sci)</a> via Auckland's own admission system, then apply into MBChB from inside that first year. UCAT ANZ is sat in the application year; MMI follows. To reach interview you need GPA ≥6.0 across the 7 first-year courses with no fails; successful UCAT scorers typically sit 80th–90th percentile+. <span class="tier-tag tier-indirect">Indirect</span> (first-year-then-apply structure)</div></div>
+                        <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body"><strong>Otago:</strong> apply direct via <strong>eVision</strong> — "Apply Now" on the <a href="https://www.otago.ac.nz/courses/qualifications/bachelor-of-medicine-and-bachelor-of-surgery" target="_blank" rel="noopener">MBChB page</a> → create an eVision account → select "Health Sciences Undergraduate Professional Programmes" → "Medicine". UCAT ANZ threshold gate applies (Verbal Reasoning ≥ 20th pct, SJT ≥ 10th pct for the general category this cycle) — but that's a floor, not the real bar; competitive UCAT is reported 75th–90th percentile, and once past the UCAT threshold, admission is described as running <strong>100% on HSFY GPA</strong>. <span class="tier-tag tier-target">Target</span> (real gate is first-year GPA, not the UCAT floor)</div></div>
                     </div>
                 </details>
             </div>
