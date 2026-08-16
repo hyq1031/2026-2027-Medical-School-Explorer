@@ -266,6 +266,179 @@
             margin-top: 0.15rem;
         }
 
+        /* How to Apply section */
+        .apply-section {
+            margin-bottom: 2rem;
+        }
+
+        .apply-intro {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.1rem;
+            max-width: 68ch;
+        }
+
+        .apply-portal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .apply-portal {
+            background-color: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .apply-portal summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .apply-portal summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .apply-portal summary::after {
+            content: "\f078";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            transition: transform 0.2s ease;
+            margin-left: auto;
+        }
+
+        .apply-portal[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .apply-portal[open] summary {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .apply-portal-name {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .apply-portal-name i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        .apply-portal-meta {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.3px;
+        }
+
+        .apply-portal-body {
+            padding: 1.1rem 1.25rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .apply-step {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .apply-step-num {
+            flex: 0 0 auto;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--primary-glow);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-top: 0.1rem;
+        }
+
+        .apply-step-body {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .apply-step-body strong {
+            color: var(--text-primary);
+        }
+
+        .apply-step-body a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .apply-step-body a:hover {
+            text-decoration: underline;
+        }
+
+        .apply-code-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.78rem;
+            margin-top: 0.3rem;
+        }
+
+        .apply-code-table th {
+            text-align: left;
+            color: var(--text-muted);
+            font-weight: 600;
+            padding: 0.4rem 0.6rem;
+            border-bottom: 1px solid var(--border-color);
+            text-transform: uppercase;
+            font-size: 0.64rem;
+            letter-spacing: 0.4px;
+        }
+
+        .apply-code-table td {
+            padding: 0.5rem 0.6rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        .apply-code-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .apply-code-table a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .apply-code-table a:hover {
+            text-decoration: underline;
+        }
+
+        .apply-code-table .code-mono {
+            font-family: var(--font-mono);
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
         /* Dashboard Main Layout */
         .dashboard {
             display: grid;
@@ -1510,6 +1683,162 @@
             <h2 class="concepts-heading"><i class="fa-solid fa-timeline"></i> Application Timeline (2026/27 Cycle)</h2>
             <p class="filter-hint" style="margin-bottom: 1rem;">Interview rounds are grouped by month. Where a school runs more than one round (e.g. Monash's December round for VIC/rural applicants vs its January round for everyone else), each round is shown as a separate entry with who it's actually open to — a strong UCAT alone doesn't unlock an earlier round if the round itself is category-gated.</p>
             <div class="timeline-track" id="timeline-track"></div>
+        </section>
+
+        <!-- How to Apply -->
+        <section class="apply-section" id="apply-section">
+            <h2 class="concepts-heading"><i class="fa-solid fa-file-pen"></i> How to Apply (Current Year 12, 2027 Entry)</h2>
+            <p class="apply-intro">Medicine applications route through <strong>state-based admissions centres</strong>, not the university directly — except WA-style direct portals and NZ. Every AU/NZ school on this site falls into one of the groups below. Preference caps, codes and lock dates are for <strong>this cycle (applying in 2026 for 2027 entry)</strong> and are re-checked live each sweeper pass — always confirm the current figure inside the portal itself before you submit, since caps and codes both drift year to year.</p>
+
+            <div class="apply-portal-list">
+                <details class="apply-portal">
+                    <summary>
+                        <span class="apply-portal-name"><i class="fa-solid fa-map-pin"></i>NSW/ACT — UAC</span>
+                        <span class="apply-portal-meta">Sydney · UNSW · Newcastle/UNE · WSU · CSU · max 5 preferences</span>
+                    </summary>
+                    <div class="apply-portal-body">
+                        <div class="apply-step"><span class="apply-step-num">1</span><div class="apply-step-body">Create an account at <a href="https://uac.edu.au" target="_blank" rel="noopener">uac.edu.au</a> with your USI and personal details.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body">Add <strong>up to 5 ranked course preferences</strong>. Each NSW medicine program is a separate code — table below. <strong>UNSW</strong> additionally requires its own Medicine Application Portal (MAP) form on top of the UAC application.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">3</span><div class="apply-step-body">Register for and sit <strong>UCAT ANZ</strong> (July sitting) — one score feeds every NSW preference, but each university ranks it independently.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">4</span><div class="apply-step-body">Submit by the standard close (30 Sep 2026 this cycle). Attend each school's own interview if shortlisted — invites don't depend on your preference order.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">5</span><div class="apply-step-body">ATAR releases 16 Dec 2026 — you can still reorder/add/drop preferences through the Dec/Jan change-of-preference rounds, final close 5 Feb 2027.</div></div>
+                        <table class="apply-code-table">
+                            <tr><th>School</th><th>UAC code</th><th>Course page</th></tr>
+                            <tr><td>UNSW</td><td class="code-mono">428000</td><td><a href="https://www.unsw.edu.au/medicine-health/study-with-us/undergraduate/domestic-applicants" target="_blank" rel="noopener">unsw.edu.au</a></td></tr>
+                            <tr><td>Sydney (BA/MD)</td><td class="code-mono">513715</td><td><a href="https://www.sydney.edu.au/courses/courses/uc/bachelor-of-science-and-doctor-of-medicine.html" target="_blank" rel="noopener">sydney.edu.au</a></td></tr>
+                            <tr><td>Sydney (BSc/MD)</td><td class="code-mono">513720</td><td><a href="https://www.sydney.edu.au/courses/courses/uc/bachelor-of-science-and-doctor-of-medicine.html" target="_blank" rel="noopener">sydney.edu.au</a></td></tr>
+                            <tr><td>Newcastle/UNE (JMP)</td><td class="code-mono">785000</td><td><a href="https://www.newcastle.edu.au/joint-medical-program" target="_blank" rel="noopener">newcastle.edu.au</a></td></tr>
+                            <tr><td>WSU (JMP)</td><td class="code-mono">725505</td><td><a href="https://www.westernsydney.edu.au/future/study/courses/undergraduate/doctor-of-medicine" target="_blank" rel="noopener">westernsydney.edu.au</a></td></tr>
+                            <tr><td>CSU (Orange, own program from Mar 2027)</td><td class="code-mono">214478</td><td><a href="https://study.csu.edu.au/courses/medical-science/doctor-medicine" target="_blank" rel="noopener">study.csu.edu.au</a></td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <details class="apply-portal">
+                    <summary>
+                        <span class="apply-portal-name"><i class="fa-solid fa-map-pin"></i>VIC — VTAC</span>
+                        <span class="apply-portal-meta">Melbourne · Monash · La Trobe (pathway) · max 8 preferences</span>
+                    </summary>
+                    <div class="apply-portal-body">
+                        <div class="apply-step"><span class="apply-step-num">1</span><div class="apply-step-body">Create an account at <a href="https://vtac.edu.au" target="_blank" rel="noopener">vtac.edu.au</a>.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body">List <strong>up to 8 ranked preferences</strong>. Confirm each school's current VTAC code on its own page below — codes aren't reproduced here as they weren't independently re-verified this session.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">3</span><div class="apply-step-body">Sit UCAT ANZ. Timely close is 5pm Mon 28 Sep 2026 this cycle. <strong>Monash-specific:</strong> if you don't have a Monash Medicine preference on your list at the close of timely applications, you cannot add one later.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">4</span><div class="apply-step-body"><strong>La Trobe</strong> is a Bachelor of Biomedical Science pathway feeding Melbourne's graduate-entry MD, not a standalone degree — needs a VTAC application <em>plus</em> a separate rurality form (and School Endorsement form if you're a current Year 12).</div></div>
+                        <div class="apply-step"><span class="apply-step-num">5</span><div class="apply-step-body">Check <a href="https://vtac.edu.au/dates" target="_blank" rel="noopener">vtac.edu.au/dates</a> for the exact change-of-preference lock and offer-round dates — not independently verified here beyond the timely-close date above.</div></div>
+                        <table class="apply-code-table">
+                            <tr><th>School</th><th>Course page</th></tr>
+                            <tr><td>Melbourne</td><td><a href="https://study.unimelb.edu.au/find/courses/graduate/doctor-of-medicine/" target="_blank" rel="noopener">study.unimelb.edu.au</a></td></tr>
+                            <tr><td>Monash</td><td><a href="https://www.monash.edu/medicine/som/direct-entry" target="_blank" rel="noopener">monash.edu</a></td></tr>
+                            <tr><td>La Trobe (pathway)</td><td><a href="https://www.latrobe.edu.au/courses/bachelor-of-biomedical-science-medical" target="_blank" rel="noopener">latrobe.edu.au</a></td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <details class="apply-portal">
+                    <summary>
+                        <span class="apply-portal-name"><i class="fa-solid fa-map-pin"></i>QLD — QTAC</span>
+                        <span class="apply-portal-meta">UQ · Griffith · JCU · USC · CQU · Bond · max 6 preferences</span>
+                    </summary>
+                    <div class="apply-portal-body">
+                        <div class="apply-step"><span class="apply-step-num">1</span><div class="apply-step-body">Create an account at <a href="https://www.qtac.edu.au" target="_blank" rel="noopener">qtac.edu.au</a>.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body">List <strong>up to 6 ranked preferences</strong>, confirming each school's current QTAC code on its own page below.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">3</span><div class="apply-step-body">Sit UCAT ANZ. UQ's standard close is 30 Sep 2026 this cycle; MMI invitations mid-late Oct, interviews mid-late Nov.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">4</span><div class="apply-step-body"><strong>CQU</strong> additionally wants a resume, personal statement and Aboriginal/Torres Strait Islander status declaration uploaded alongside the QTAC form. <strong>Bond</strong> is private and also runs a separate QTAC window (5–19 Jan 2027) for late/gap-year applicants.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">5</span><div class="apply-step-body">Check <a href="https://www.qtac.edu.au/key-info/" target="_blank" rel="noopener">qtac.edu.au/key-info</a> for exact lock/offer round dates per school — only UQ's close date above was independently verified this session.</div></div>
+                        <table class="apply-code-table">
+                            <tr><th>School</th><th>Course page</th></tr>
+                            <tr><td>UQ</td><td><a href="https://study.uq.edu.au/study-options/programs/doctor-medicine-provisional-entry-5740" target="_blank" rel="noopener">study.uq.edu.au</a></td></tr>
+                            <tr><td>Griffith</td><td><a href="https://www.griffith.edu.au/study/degrees/bachelor-of-medical-science-1282" target="_blank" rel="noopener">griffith.edu.au</a></td></tr>
+                            <tr><td>JCU</td><td><a href="https://www.jcu.edu.au/courses/bachelor-of-medicine-bachelor-of-surgery" target="_blank" rel="noopener">jcu.edu.au</a></td></tr>
+                            <tr><td>USC</td><td><a href="https://www.usc.edu.au/study/courses-and-programs/bachelor-degrees-undergraduate-programs/bachelor-of-medical-science" target="_blank" rel="noopener">usc.edu.au</a></td></tr>
+                            <tr><td>CQU (regional pathway)</td><td><a href="https://www.cqu.edu.au/courses/bachelor-of-medical-science-regional-medical-pathway" target="_blank" rel="noopener">cqu.edu.au</a></td></tr>
+                            <tr><td>Bond (private)</td><td><a href="https://bond.edu.au/applications-medical-program" target="_blank" rel="noopener">bond.edu.au</a></td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <details class="apply-portal">
+                    <summary>
+                        <span class="apply-portal-name"><i class="fa-solid fa-map-pin"></i>SA/NT — SATAC</span>
+                        <span class="apply-portal-meta">Adelaide · Flinders · Charles Darwin · max 6 preferences</span>
+                    </summary>
+                    <div class="apply-portal-body">
+                        <div class="apply-step"><span class="apply-step-num">1</span><div class="apply-step-body">Create an account at <a href="https://www.satac.edu.au" target="_blank" rel="noopener">satac.edu.au</a>.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body">List <strong>up to 6 ranked preferences</strong>. <strong>Flinders and CDU share one Doctor of Medicine application</strong> — the Bedford Park (SA) and Darwin (NT Medical Program) campuses are entered as separate preferences within that one SATAC form, not separate applications.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">3</span><div class="apply-step-body">Sit UCAT ANZ. CDU's confirmed close this cycle is 9 Oct 2026 (SATAC code SMED01) per this app's verified data.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">4</span><div class="apply-step-body">Flinders' MD interview is a 45-minute panel format, distinct from the MMI style used elsewhere.</div></div>
+                        <table class="apply-code-table">
+                            <tr><th>School</th><th>Course page</th></tr>
+                            <tr><td>Adelaide</td><td><a href="https://www.adelaide.edu.au/degree-finder/bmsdm_bmedscidm.html" target="_blank" rel="noopener">adelaide.edu.au</a></td></tr>
+                            <tr><td>Flinders (SA campus)</td><td><a href="https://www.flinders.edu.au/study/courses/bachelor-clinical-sciences-doctor-medicine" target="_blank" rel="noopener">flinders.edu.au</a></td></tr>
+                            <tr><td>Charles Darwin (NT campus, SMED01)</td><td><a href="https://www.cdu.edu.au/study/course/bachelor-clinical-science-medicinedoctor-medicine-smed01" target="_blank" rel="noopener">cdu.edu.au</a></td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <details class="apply-portal">
+                    <summary>
+                        <span class="apply-portal-name"><i class="fa-solid fa-map-pin"></i>WA — TISC</span>
+                        <span class="apply-portal-meta">UWA · Curtin · Notre Dame (Fremantle) · max 6 preferences</span>
+                    </summary>
+                    <div class="apply-portal-body">
+                        <div class="apply-step"><span class="apply-step-num">1</span><div class="apply-step-body">Create an account at <a href="https://www.tisc.edu.au" target="_blank" rel="noopener">tisc.edu.au</a>.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body">List <strong>up to 6 ranked preferences</strong>. Current Year 12 WA school leavers can lodge early, before 30 Nov 2026 this cycle.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">3</span><div class="apply-step-body"><strong>Eligibility gate:</strong> for 2027 entry to UWA's Assured Pathway or Curtin Medicine you must hold Australian permanent residency <strong>by 30 Sep 2026</strong> — this is a hard cutoff, not adjustable after the fact.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">4</span><div class="apply-step-body">Interviews are arranged directly by UWA/Curtin, weighted by UCAT (and predicted ATAR at Curtin — UWA doesn't use predicted ATAR for its interview shortlist).</div></div>
+                        <table class="apply-code-table">
+                            <tr><th>School</th><th>Course page</th></tr>
+                            <tr><td>UWA</td><td><a href="https://www.uwa.edu.au/study/courses/doctor-of-medicine-direct-pathway" target="_blank" rel="noopener">uwa.edu.au</a></td></tr>
+                            <tr><td>Curtin</td><td><a href="https://study.curtin.edu.au/offering/course-ug-bachelor-of-medicine-bachelor-of-surgery-mbbs--ur-mdsurg/" target="_blank" rel="noopener">study.curtin.edu.au</a></td></tr>
+                            <tr><td>Notre Dame (Fremantle, WA campus)</td><td><a href="https://www.notredame.edu.au/programs/school-of-medicine" target="_blank" rel="noopener">notredame.edu.au</a></td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <details class="apply-portal">
+                    <summary>
+                        <span class="apply-portal-name"><i class="fa-solid fa-map-pin"></i>ACT, TAS — Direct</span>
+                        <span class="apply-portal-meta">ANU · UTAS · no shared portal</span>
+                    </summary>
+                    <div class="apply-portal-body">
+                        <div class="apply-step"><span class="apply-step-num">1</span><div class="apply-step-body"><strong>ANU (Bachelor of Health Science):</strong> school leavers apply direct through <a href="https://science.anu.edu.au/study/how-apply/bachelor-health-science-domestic" target="_blank" rel="noopener">ANU's own portal</a> plus a compulsory BHLTH Supplementary Form. Non-school-leavers/transfers must go via UAC instead. No UCAT — this is a pathway toward the postgrad MChD (≤30 places/yr), not a guaranteed medicine seat.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body"><strong>UTAS (H3X):</strong> apply direct at <a href="https://www.utas.edu.au/study/apply" target="_blank" rel="noopener">utas.edu.au/study/apply</a>. Close 30 Sep 2026 this cycle, strictly enforced — not part of the Schools Recommendation Program.</div></div>
+                    </div>
+                </details>
+
+                <details class="apply-portal">
+                    <summary>
+                        <span class="apply-portal-name"><i class="fa-solid fa-map-pin"></i>NZ — Direct</span>
+                        <span class="apply-portal-meta">Auckland · Otago · own portals, not a shared TAC</span>
+                    </summary>
+                    <div class="apply-portal-body">
+                        <div class="apply-step"><span class="apply-step-num">1</span><div class="apply-step-body"><strong>Auckland:</strong> you cannot apply into MBChB directly as a school leaver — first apply into <a href="https://www.auckland.ac.nz/en/study/study-options/find-a-study-option/bachelor-of-medicine-and-bachelor-of-surgery-mbchb.html" target="_blank" rel="noopener">BHSc or BSc(Biomed Sci)</a> via Auckland's own admission system, then apply into MBChB from inside that first year. UCAT ANZ is sat in the application year; MMI follows.</div></div>
+                        <div class="apply-step"><span class="apply-step-num">2</span><div class="apply-step-body"><strong>Otago:</strong> apply direct via <strong>eVision</strong> — "Apply Now" on the <a href="https://www.otago.ac.nz/courses/qualifications/bachelor-of-medicine-and-bachelor-of-surgery" target="_blank" rel="noopener">MBChB page</a> → create an eVision account → select "Health Sciences Undergraduate Professional Programmes" → "Medicine". UCAT ANZ threshold gate applies (Verbal Reasoning ≥ 20th pct, SJT ≥ 10th pct for the general category this cycle).</div></div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="concept-card">
+                <h3 class="concept-card-title"><i class="fa-solid fa-layer-group"></i> How many of your preferences should actually be medicine?</h3>
+                <p>This app deliberately doesn't hand you a fixed "best 5" list — the right mix depends on <strong>your own predicted ATAR/UCAT band</strong>, which no generic guide can honestly know for you this early, and cutoffs move every cycle. Use a reach/target/safety split instead:</p>
+                <p><strong>1–2 reach</strong> — schools whose published ATAR/UCAT band sits above your current predicted range. <strong>2–3 target</strong> — schools where your predicted profile currently sits inside the published band. <strong>1 back-up</strong> — a non-medicine course, or a lower-threshold pathway (e.g. a rural-weighted or regional program) you'd genuinely accept.</p>
+                <div class="concept-tip">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>Set your predicted ATAR/UCAT in the sidebar's <strong>Match Estimator</strong> and filter by country/state — it'll tag each school "Likely / Possible / Unlikely" against its own live-verified band, giving you a data-driven reach/target/safety split instead of a guess.</span>
+                </div>
+            </div>
+
+            <div class="concepts-grid" style="margin-top: 1.25rem;">
+                <div class="concept-card">
+                    <h3 class="concept-card-title"><i class="fa-solid fa-triangle-exclamation"></i> Before you submit — watch-outs</h3>
+                    <p><strong>Order ≠ evaluation.</strong> Preference rank never changes how an individual university scores you — it only decides which single offer surfaces when more than one school selects you in the same round (see the multi-offer card above).</p>
+                    <p><strong>Caps and codes drift.</strong> The preference limits above (UAC 5 / VTAC 8 / QTAC 6 / SATAC 6 / TISC 6) and every course code are this cycle's figures — confirm the live number inside the portal before you submit, not from a cached screenshot.</p>
+                    <p><strong>UCAT is shared, selection isn't.</strong> One UCAT ANZ sitting feeds every preference inside a state portal, but each university applies its own cutoff and interview process on top of it independently.</p>
+                    <p><strong>Notre Dame is the odd one out.</strong> Its MD is postgraduate-style (GAMSAT + GPA + CASPer + MMI via GEMSAS) — it doesn't consume a UAC/TISC undergrad preference slot and doesn't behave like the rest of this list.</p>
+                    <p><strong>An accepted offer doesn't freeze your list.</strong> You can still change remaining preferences for later rounds — but you must manually remove the course you've accepted, or the portal keeps treating it as your best eligible outcome and won't offer you anything lower-ranked.</p>
+                    <p><strong>Bonded places.</strong> Some rural-entry offers carry a return-of-service obligation — don't rank one highly purely because the ATAR looks lower without reading the "Bonded vs Unbonded" card above.</p>
+                </div>
+            </div>
         </section>
 
         <!-- Main Dashboard -->
